@@ -1,11 +1,11 @@
 const { StatusCodes } = require('http-status-codes');
-const router = require('express').Router();
-const usersService = require('./user.service');
+const router = require('express').Router({ mergeParams: true });
+const tasksService = require('./task.service');
 
 // GET ALL
 router.route('/').get(async (_req, res) => {
   try {
-    return res.json(await usersService.getAll());
+    return res.json(await tasksService.getAll());
   } catch (err) {
     return res.status(StatusCodes.NOT_FOUND).send(err.message);
   }
@@ -14,7 +14,7 @@ router.route('/').get(async (_req, res) => {
 // GET BY ID
 router.route('/:id').get(async (req, res) => {
   try {
-    return res.json(await usersService.get(req));
+    return res.json(await tasksService.get(req));
   } catch (err) {
     return res.status(StatusCodes.NOT_FOUND).send(err.message);
   }
@@ -23,7 +23,7 @@ router.route('/:id').get(async (req, res) => {
 // CREATE
 router.route('/').post(async (req, res) => {
   try {
-    return res.status(StatusCodes.CREATED).json(await usersService.create(req));
+    return res.status(StatusCodes.CREATED).json(await tasksService.create(req));
   } catch (err) {
     return res.status(StatusCodes.NOT_FOUND).send(err.message);
   }
@@ -32,7 +32,7 @@ router.route('/').post(async (req, res) => {
 // UPDATE
 router.route('/:id').put(async (req, res) => {
   try {
-    return res.json(await usersService.update(req.params.id, req.body));
+    return res.json(await tasksService.update(req));
   } catch (err) {
     return res.status(StatusCodes.NOT_FOUND).send(err.message);
   }
@@ -41,7 +41,7 @@ router.route('/:id').put(async (req, res) => {
 // DELETE
 router.route('/:id').delete(async (req, res) => {
   try {
-    return res.json(await usersService.remove(req.params.id));
+    return res.json(await tasksService.remove(req));
   } catch (err) {
     return res.status(StatusCodes.NOT_FOUND).send(err.message);
   }
