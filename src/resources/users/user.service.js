@@ -1,3 +1,5 @@
+// @ts-check
+
 const usersRepo = require('./user.memory.repository');
 const User = require('./user.model');
 

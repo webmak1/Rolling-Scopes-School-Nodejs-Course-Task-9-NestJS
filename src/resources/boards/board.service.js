@@ -1,3 +1,5 @@
+// @ts-check
+
 const boardsRepo = require('./board.memory.repository');
 const Board = require('./board.model');
 

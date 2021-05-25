@@ -1,4 +1,6 @@
-const DBTasks = require('../../common/InMemeryDbTasks');
+// @ts-check
+
+const DBTasks = require('../../common/InMemoryDbTasks');
 
 const getAll = async () => DBTasks.getAllTasks();
 

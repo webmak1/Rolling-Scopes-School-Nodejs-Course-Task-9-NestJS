@@ -1,3 +1,5 @@
+// @ts-check
+
 const { v4: uuid } = require('uuid');
 
 class User {

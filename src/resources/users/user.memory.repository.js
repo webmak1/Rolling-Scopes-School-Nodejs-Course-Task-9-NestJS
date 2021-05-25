@@ -1,4 +1,6 @@
-const DBUsers = require('../../common/InMemeryDbUsers');
+// @ts-check
+
+const DBUsers = require('../../common/InMemoryDbUsers');
 
 const getAll = async () => DBUsers.getAllUsers();
 

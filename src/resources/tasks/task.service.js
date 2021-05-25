@@ -1,3 +1,5 @@
+// @ts-check
+
 const tasksRepo = require('./task.memory.repository');
 const Task = require('./task.model');
 

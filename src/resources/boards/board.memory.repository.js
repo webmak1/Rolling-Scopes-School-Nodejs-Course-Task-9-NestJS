@@ -1,4 +1,6 @@
-const DBBoards = require('../../common/InMemeryDbBoards');
+// @ts-check
+
+const DBBoards = require('../../common/InMemoryDbBoards');
 
 const getAll = async () => DBBoards.getAllBoards();
 

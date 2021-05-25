@@ -1,3 +1,5 @@
+// @ts-check
+
 const { StatusCodes } = require('http-status-codes');
 const router = require('express').Router({ mergeParams: true });
 const tasksService = require('./task.service');

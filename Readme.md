@@ -1,4 +1,8 @@
-# RS School REST service
+# RS School TypeScript basics
+
+    $ npm install -D jsdoc
+
+    
 
 Привет!
 

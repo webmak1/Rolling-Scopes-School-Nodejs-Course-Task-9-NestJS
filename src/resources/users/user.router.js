@@ -1,3 +1,5 @@
+// @ts-check
+
 const { StatusCodes } = require('http-status-codes');
 const router = require('express').Router();
 const usersService = require('./user.service');
