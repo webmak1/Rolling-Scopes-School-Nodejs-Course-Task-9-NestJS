@@ -14,11 +14,14 @@ const _ = require('lodash');
  * @property {string} columnId - Column Id
  */
 
+/**
+ * @type{Task[]}
+ */
 const DBTasks = [];
 
 /**
  * ### Get All Tasks
- * @returns {Promise<object>} - All Tasks
+ * @returns {Promise<Task[]>} - Promise with All Tasks
  */
 const getAllTasks = async () => DBTasks.slice(0);
 
@@ -26,7 +29,7 @@ const getAllTasks = async () => DBTasks.slice(0);
  * ### Get Task
  * @param {string} boardId - board id
  * @param {string} taskId - task id
- * @returns {Promise<object>} - One Board by Id
+ * @returns {Promise<Task>} - Promise with a Single Task
  */
 const getTask = async (boardId, taskId) => {
   const allTasks = await getAllTasks();
@@ -45,7 +48,7 @@ const getTask = async (boardId, taskId) => {
 /**
  * ### Create Task
  * @param {object} task - Task body
- * @returns {Promise<object>} - Created Task
+ * @returns {Promise<Task | {}>} - Promise with Created Task or Empty object
  */
 const createTask = async (task) => {
   DBTasks.push(task);
@@ -55,7 +58,7 @@ const createTask = async (task) => {
 /**
  * ### Remove Task
  * @param {string} id - Task Id
- * @returns {Promise<object>} - Deleted Task
+ * @returns {Promise<Task>} - Promise with Deleted Task
  */
 const removeTask = async (id) => {
   const deletedTask = await getTask(null, id);
@@ -66,7 +69,7 @@ const removeTask = async (id) => {
 /**
  * ### Delete User From Tasks
  * @param {string} userId
- * @returns {Promise<null>} - Promise with Nothing
+ * @returns {Promise<void>} - Promise with Nothing
  */
 const deleteUserFromTasks = async (userId) => {
   await _.map(DBTasks, async (task) => {
@@ -75,7 +78,6 @@ const deleteUserFromTasks = async (userId) => {
       await createTask({ ...task, userId: null });
     }
   });
-  return null;
 };
 
 /**
@@ -83,7 +85,7 @@ const deleteUserFromTasks = async (userId) => {
  * @param {string} boardId - Board Id
  * @param {string} taskId - Task Id
  * @param {object} body - Task Body
- * @returns {Promise<object>} - Updated Board
+ * @returns {Promise<Task>} - Promise with Updated Task
  */
 const updateTask = async (boardId, taskId, body) => {
   await removeTask(taskId);
@@ -94,7 +96,7 @@ const updateTask = async (boardId, taskId, body) => {
 /**
  * ### Remove Task by Board Id
  * @param {string} boardId
- * @returns {Promise<void>} - Promise of Nothing
+ * @returns {Promise<void>} - Promise with Nothing
  */
 const removeTaskByBoardId = async (boardId) => {
   await _.remove(DBTasks, (task) => task.boardId === boardId);

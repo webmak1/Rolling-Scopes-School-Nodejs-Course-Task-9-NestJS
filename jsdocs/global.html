@@ -94,6 +94,184 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="DBBoards"><span class="type-signature">(constant) </span>DBBoards<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="DBTasks"><span class="type-signature">(constant) </span>DBTasks<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="DBUsers"><span class="type-signature">(constant) </span>DBUsers<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -104,7 +282,7 @@
     
 
     
-    <h4 class="name" id="createBoard"><span class="type-signature">(async) </span>createBoard<span class="signature">(board)</span><span class="type-signature"> &rarr; {<a href="global.html#Board">Board</a>}</span></h4>
+    <h4 class="name" id="createBoard"><span class="type-signature">(async) </span>createBoard<span class="signature">(board)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#Board">Board</a>|{})>}</span></h4>
     
 
     
@@ -205,7 +383,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line37">line 37</a>
+        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -234,7 +412,9 @@
 
         
 <div class="param-desc">
-    <p>[] | [{}] - Created Board</p>
+    <ul>
+<li>Promise with Created Board or Empty object</li>
+</ul>
 </div>
 
 
@@ -245,7 +425,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#Board">Board</a></span>
+<span class="param-type">Promise.&lt;(<a href="global.html#Board">Board</a>|{})></span>
 
 
     </dd>
@@ -263,7 +443,7 @@
     
 
     
-    <h4 class="name" id="createTask"><span class="type-signature">(async) </span>createTask<span class="signature">(task)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
+    <h4 class="name" id="createTask"><span class="type-signature">(async) </span>createTask<span class="signature">(task)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#Task">Task</a>|{})>}</span></h4>
     
 
     
@@ -364,7 +544,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line50">line 50</a>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -394,7 +574,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Created Task</li>
+<li>Promise with Created Task or Empty object</li>
 </ul>
 </div>
 
@@ -406,7 +586,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;object></span>
+<span class="param-type">Promise.&lt;(<a href="global.html#Task">Task</a>|{})></span>
 
 
     </dd>
@@ -424,7 +604,7 @@
     
 
     
-    <h4 class="name" id="createUser"><span class="type-signature">(async) </span>createUser<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise.&lt;({<a href="global.html#User">User</a>}|{})>}</span></h4>
+    <h4 class="name" id="createUser"><span class="type-signature">(async) </span>createUser<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#User">User</a>|{})>}</span></h4>
     
 
     
@@ -525,7 +705,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line38">line 38</a>
+        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -567,7 +747,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;({<a href="global.html#User">User</a>}|{})></span>
+<span class="param-type">Promise.&lt;(<a href="global.html#User">User</a>|{})></span>
 
 
     </dd>
@@ -585,7 +765,7 @@
     
 
     
-    <h4 class="name" id="deleteUserFromTasks"><span class="type-signature">(async) </span>deleteUserFromTasks<span class="signature">(userId)</span><span class="type-signature"> &rarr; {Promise.&lt;null>}</span></h4>
+    <h4 class="name" id="deleteUserFromTasks"><span class="type-signature">(async) </span>deleteUserFromTasks<span class="signature">(userId)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
     
@@ -686,7 +866,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line71">line 71</a>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -728,7 +908,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;null></span>
+<span class="param-type">Promise.&lt;void></span>
 
 
     </dd>
@@ -746,7 +926,7 @@
     
 
     
-    <h4 class="name" id="getAllBoards"><span class="type-signature">(async) </span>getAllBoards<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="global.html#Board">Board</a>}</span></h4>
+    <h4 class="name" id="getAllBoards"><span class="type-signature">(async) </span>getAllBoards<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#Board">Board</a>>>}</span></h4>
     
 
     
@@ -798,7 +978,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line20">line 20</a>
+        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -827,7 +1007,9 @@
 
         
 <div class="param-desc">
-    <p>[] | [{}] - All Boards</p>
+    <ul>
+<li>Promise with All Boards</li>
+</ul>
 </div>
 
 
@@ -838,7 +1020,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#Board">Board</a></span>
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#Board">Board</a>>></span>
 
 
     </dd>
@@ -856,7 +1038,7 @@
     
 
     
-    <h4 class="name" id="getAllTasks"><span class="type-signature">(async) </span>getAllTasks<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
+    <h4 class="name" id="getAllTasks"><span class="type-signature">(async) </span>getAllTasks<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#Task">Task</a>>>}</span></h4>
     
 
     
@@ -908,7 +1090,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line23">line 23</a>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -938,7 +1120,7 @@
         
 <div class="param-desc">
     <ul>
-<li>All Tasks</li>
+<li>Promise with All Tasks</li>
 </ul>
 </div>
 
@@ -950,7 +1132,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;object></span>
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#Task">Task</a>>></span>
 
 
     </dd>
@@ -968,7 +1150,7 @@
     
 
     
-    <h4 class="name" id="getAllUsers"><span class="type-signature">(async) </span>getAllUsers<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getAllUsers"><span class="type-signature">(async) </span>getAllUsers<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#User">User</a>>>}</span></h4>
     
 
     
@@ -1020,7 +1202,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line21">line 21</a>
+        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -1049,10 +1231,24 @@
 
         
 <div class="param-desc">
-    <p>Promise&lt;[User] | &gt; - Promise with All Users or Promise with {}</p>
+    <ul>
+<li>Promise with All Users</li>
+</ul>
 </div>
 
 
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#User">User</a>>></span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -1066,7 +1262,7 @@
     
 
     
-    <h4 class="name" id="getBoard"><span class="type-signature">(async) </span>getBoard<span class="signature">(id)</span><span class="type-signature"> &rarr; {<a href="global.html#Board">Board</a>}</span></h4>
+    <h4 class="name" id="getBoard"><span class="type-signature">(async) </span>getBoard<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
     
 
     
@@ -1167,7 +1363,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line27">line 27</a>
+        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -1196,7 +1392,9 @@
 
         
 <div class="param-desc">
-    <p>[] | [{}] - One Board by Id</p>
+    <ul>
+<li>Promise with a Single Board</li>
+</ul>
 </div>
 
 
@@ -1207,7 +1405,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#Board">Board</a></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Board">Board</a>></span>
 
 
     </dd>
@@ -1225,7 +1423,7 @@
     
 
     
-    <h4 class="name" id="getTask"><span class="type-signature">(async) </span>getTask<span class="signature">(boardId, taskId)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
+    <h4 class="name" id="getTask"><span class="type-signature">(async) </span>getTask<span class="signature">(boardId, taskId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
     
 
     
@@ -1349,7 +1547,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line31">line 31</a>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -1379,7 +1577,7 @@
         
 <div class="param-desc">
     <ul>
-<li>One Board by Id</li>
+<li>Promise with a Single Task</li>
 </ul>
 </div>
 
@@ -1391,7 +1589,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;object></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Task">Task</a>></span>
 
 
     </dd>
@@ -1409,7 +1607,7 @@
     
 
     
-    <h4 class="name" id="getUser"><span class="type-signature">(async) </span>getUser<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;({<a href="global.html#User">User</a>}|{})>}</span></h4>
+    <h4 class="name" id="getUser"><span class="type-signature">(async) </span>getUser<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
     
 
     
@@ -1510,7 +1708,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line28">line 28</a>
+        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -1540,7 +1738,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Promise with User by id or Empty object</li>
+<li>Promise with a Single User</li>
 </ul>
 </div>
 
@@ -1552,7 +1750,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;({<a href="global.html#User">User</a>}|{})></span>
+<span class="param-type">Promise.&lt;<a href="global.html#User">User</a>></span>
 
 
     </dd>
@@ -1570,7 +1768,7 @@
     
 
     
-    <h4 class="name" id="removeBoard"><span class="type-signature">(async) </span>removeBoard<span class="signature">(boardId)</span><span class="type-signature"> &rarr; {<a href="global.html#Board">Board</a>}</span></h4>
+    <h4 class="name" id="removeBoard"><span class="type-signature">(async) </span>removeBoard<span class="signature">(boardId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
     
 
     
@@ -1671,7 +1869,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line47">line 47</a>
+        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -1700,7 +1898,9 @@
 
         
 <div class="param-desc">
-    <p>[] | [{}] - Deleted Board</p>
+    <ul>
+<li>Promise with Deleted Board</li>
+</ul>
 </div>
 
 
@@ -1711,7 +1911,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#Board">Board</a></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Board">Board</a>></span>
 
 
     </dd>
@@ -1729,7 +1929,7 @@
     
 
     
-    <h4 class="name" id="removeTask"><span class="type-signature">(async) </span>removeTask<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
+    <h4 class="name" id="removeTask"><span class="type-signature">(async) </span>removeTask<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
     
 
     
@@ -1830,7 +2030,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line60">line 60</a>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -1860,7 +2060,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Deleted Task</li>
+<li>Promise with Deleted Task</li>
 </ul>
 </div>
 
@@ -1872,7 +2072,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;object></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Task">Task</a>></span>
 
 
     </dd>
@@ -1991,7 +2191,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line99">line 99</a>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -2021,7 +2221,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Promise of Nothing</li>
+<li>Promise with Nothing</li>
 </ul>
 </div>
 
@@ -2051,7 +2251,7 @@
     
 
     
-    <h4 class="name" id="removeUser"><span class="type-signature">(async) </span>removeUser<span class="signature">(userId)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#User">User</a>|{})>}</span></h4>
+    <h4 class="name" id="removeUser"><span class="type-signature">(async) </span>removeUser<span class="signature">(userId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
     
 
     
@@ -2152,7 +2352,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line48">line 48</a>
+        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -2182,7 +2382,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Promise with Deleted User or Empty object</li>
+<li>Promise with Deleted User</li>
 </ul>
 </div>
 
@@ -2194,7 +2394,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;(<a href="global.html#User">User</a>|{})></span>
+<span class="param-type">Promise.&lt;<a href="global.html#User">User</a>></span>
 
 
     </dd>
@@ -2212,7 +2412,7 @@
     
 
     
-    <h4 class="name" id="updateBoard"><span class="type-signature">(async) </span>updateBoard<span class="signature">(id, body)</span><span class="type-signature"> &rarr; {<a href="global.html#Board">Board</a>}</span></h4>
+    <h4 class="name" id="updateBoard"><span class="type-signature">(async) </span>updateBoard<span class="signature">(id, body)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
     
 
     
@@ -2336,7 +2536,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line60">line 60</a>
+        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -2365,7 +2565,9 @@
 
         
 <div class="param-desc">
-    <p>[] | [{}] - Updated Board</p>
+    <ul>
+<li>Promise with Updated Board</li>
+</ul>
 </div>
 
 
@@ -2376,7 +2578,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#Board">Board</a></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Board">Board</a>></span>
 
 
     </dd>
@@ -2394,7 +2596,7 @@
     
 
     
-    <h4 class="name" id="updateTask"><span class="type-signature">(async) </span>updateTask<span class="signature">(boardId, taskId, body)</span><span class="type-signature"> &rarr; {Promise.&lt;object>}</span></h4>
+    <h4 class="name" id="updateTask"><span class="type-signature">(async) </span>updateTask<span class="signature">(boardId, taskId, body)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
     
 
     
@@ -2541,7 +2743,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line88">line 88</a>
+        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line90">line 90</a>
     </li></ul></dd>
     
 
@@ -2571,7 +2773,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Updated Board</li>
+<li>Promise with Updated Task</li>
 </ul>
 </div>
 
@@ -2583,7 +2785,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;object></span>
+<span class="param-type">Promise.&lt;<a href="global.html#Task">Task</a>></span>
 
 
     </dd>
@@ -2601,7 +2803,7 @@
     
 
     
-    <h4 class="name" id="updateUser"><span class="type-signature">(async) </span>updateUser<span class="signature">(id, body)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#User">User</a>|{})>}</span></h4>
+    <h4 class="name" id="updateUser"><span class="type-signature">(async) </span>updateUser<span class="signature">(id, body)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
     
 
     
@@ -2725,7 +2927,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line61">line 61</a>
+        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -2755,7 +2957,7 @@
         
 <div class="param-desc">
     <ul>
-<li>Promise with Updated User or Empty object</li>
+<li>Promise with Updated User</li>
 </ul>
 </div>
 
@@ -2767,7 +2969,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;(<a href="global.html#User">User</a>|{})></span>
+<span class="param-type">Promise.&lt;<a href="global.html#User">User</a>></span>
 
 
     </dd>
@@ -3424,13 +3626,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createBoard">createBoard</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#deleteUserFromTasks">deleteUserFromTasks</a></li><li><a href="global.html#getAllBoards">getAllBoards</a></li><li><a href="global.html#getAllTasks">getAllTasks</a></li><li><a href="global.html#getAllUsers">getAllUsers</a></li><li><a href="global.html#getBoard">getBoard</a></li><li><a href="global.html#getTask">getTask</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#removeBoard">removeBoard</a></li><li><a href="global.html#removeTask">removeTask</a></li><li><a href="global.html#removeTaskByBoardId">removeTaskByBoardId</a></li><li><a href="global.html#removeUser">removeUser</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateTask">updateTask</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createBoard">createBoard</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#DBBoards">DBBoards</a></li><li><a href="global.html#DBTasks">DBTasks</a></li><li><a href="global.html#DBUsers">DBUsers</a></li><li><a href="global.html#deleteUserFromTasks">deleteUserFromTasks</a></li><li><a href="global.html#getAllBoards">getAllBoards</a></li><li><a href="global.html#getAllTasks">getAllTasks</a></li><li><a href="global.html#getAllUsers">getAllUsers</a></li><li><a href="global.html#getBoard">getBoard</a></li><li><a href="global.html#getTask">getTask</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#removeBoard">removeBoard</a></li><li><a href="global.html#removeTask">removeTask</a></li><li><a href="global.html#removeTaskByBoardId">removeTaskByBoardId</a></li><li><a href="global.html#removeUser">removeUser</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateTask">updateTask</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue May 25 2021 08:24:33 GMT+0300 (Moscow Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue May 25 2021 22:05:55 GMT+0300 (Moscow Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

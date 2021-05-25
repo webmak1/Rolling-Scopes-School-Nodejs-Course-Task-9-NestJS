@@ -12,18 +12,21 @@ const DBTasks = require('./InMemoryDbTasks');
  * @property {string} password - Password
  */
 
-const DBUsers = [{}];
+/**
+ * @type{User[]}
+ */
+const DBUsers = [];
 
 /**
  * ### Get All Users
- * @returns Promise<[User] | {}> - Promise with All Users or Promise with {}
+ * @returns {Promise<User[]>} - Promise with All Users
  */
 const getAllUsers = async () => DBUsers.slice(0);
 
 /**
  * ### Get User
  * @param {string} id - user id
- * @returns {Promise<{User} | {}>} - Promise with User by id or Empty object
+ * @returns {Promise<User>} - Promise with a Single User
  */
 const getUser = async (id) => {
   const allUsers = await getAllUsers();
@@ -33,7 +36,7 @@ const getUser = async (id) => {
 /**
  * ### Create User
  * @param {object} user - User body
- * @returns {Promise<{User} | {}>} - Promise with Created User or Empty object
+ * @returns {Promise<User | {}>} - Promise with Created User or Empty object
  */
 const createUser = async (user) => {
   DBUsers.push(user);
@@ -43,7 +46,7 @@ const createUser = async (user) => {
 /**
  * ### Remove User
  * @param {string} userId - User Id
- * @returns {Promise<User | {}>} - Promise with Deleted User or Empty object
+ * @returns {Promise<User>} - Promise with Deleted User
  */
 const removeUser = async (userId) => {
   const deletedUser = await getUser(userId);
@@ -56,7 +59,7 @@ const removeUser = async (userId) => {
  * ### Update User
  * @param {string} id - User Id
  * @param {object} body - User Body
- * @returns {Promise<User | {}>} - Promise with Updated User or Empty object
+ * @returns {Promise<User>} - Promise with Updated User
  */
 const updateUser = async (id, body) => {
   await removeUser(id);

@@ -5,24 +5,27 @@ const DBTasks = require('./InMemoryDbTasks');
 
 /**
  * A Board
- * @typedef {Object} Board
+ * @typedef {Object} Board - Board
  * @property {string} id - Id
  * @property {string} title - Title
  * @property {string} columns - Columns
  */
 
-const DBBoards = [{}];
+/**
+ * @type{Board[]}
+ */
+const DBBoards = [];
 
 /**
  * ### Get All Boards
- * @returns [{Board}] | [{}] - All Boards
+ * @returns {Promise<Board[]>} - Promise with All Boards
  */
 const getAllBoards = async () => DBBoards.slice(0);
 
 /**
  * ### Get Board
  * @param {string} id - board id
- * @returns [{Board}] | [{}] - One Board by Id
+ * @returns {Promise<Board>} - Promise with a Single Board
  */
 const getBoard = async (id) => {
   const allBoards = await getAllBoards();
@@ -32,7 +35,7 @@ const getBoard = async (id) => {
 /**
  * ### Create Board
  * @param {object} board - Board body
- * @returns [{Board}] | [{}] - Created Board
+ * @returns {Promise<Board | {}>} - Promise with Created Board or Empty object
  */
 const createBoard = async (board) => {
   DBBoards.push(board);
@@ -42,7 +45,7 @@ const createBoard = async (board) => {
 /**
  * ### Remove Board
  * @param {string} boardId - Board Id
- * @returns [{Board}] | [{}] - Deleted Board
+ * @returns {Promise<Board>} - Promise with Deleted Board
  */
 const removeBoard = async (boardId) => {
   const deletedBoard = await getBoard(boardId);
@@ -55,7 +58,7 @@ const removeBoard = async (boardId) => {
  * ### Update Board
  * @param {string} id - Board Id
  * @param {object} body - Board body
- * @returns [{Board}] | [{}] - Updated Board
+ * @returns {Promise<Board>} - Promise with Updated Board
  */
 const updateBoard = async (id, body) => {
   await removeBoard(id);
