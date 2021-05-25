@@ -14,11 +14,7 @@ const _ = require('lodash');
  * @property {string} columnId - Column Id
  */
 
-/**
- * ### Tasks DB
- * @type [{}]
- */
-const DBTasks = [{}];
+const DBTasks = [];
 
 /**
  * ### Get All Tasks

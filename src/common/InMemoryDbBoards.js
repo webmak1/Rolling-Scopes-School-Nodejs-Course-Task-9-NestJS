@@ -11,10 +11,6 @@ const DBTasks = require('./InMemoryDbTasks');
  * @property {string} columns - Columns
  */
 
-/**
- * ### Boards DB
- * @type [{Board}] | [{}]
- */
 const DBBoards = [{}];
 
 /**

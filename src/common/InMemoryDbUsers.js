@@ -5,28 +5,24 @@ const DBTasks = require('./InMemoryDbTasks');
 
 /**
  * A User
- * @typedef {Object} User
+ * @typedef {Object} - User
  * @property {string} id - Id
  * @property {string} name - Name
  * @property {string} login - Login
  * @property {string} password - Password
  */
 
-/**
- * ### Users DB
- * @type {[{user:User}] | [{}]}
- */
 const DBUsers = [{}];
 
 /**
  * ### Get All Users
- * @returns {Promise<[{user:User}] | [{}]>} - Promise with All Users or Promise with {}
+ * @returns {Promise<{User} | {}>} - Promise with All Users or Promise with {}
  */
 const getAllUsers = async () => {
-  if (DBUsers.length > 0) {
+  if (DBUsers.length > 0 && DBUsers[0] !== {}) {
     return DBUsers.slice(0);
   }
-  return {};
+  return DBUsers;
 };
 
 /**
@@ -36,11 +32,7 @@ const getAllUsers = async () => {
  */
 const getUser = async (id) => {
   const allUsers = await getAllUsers();
-
-  if (!_.isEmpty(allUsers)) {
-    return allUsers.filter((el) => el.id === id)[0];
-  }
-  return {};
+  return allUsers.filter((el) => el.id === id)[0];
 };
 
 /**
