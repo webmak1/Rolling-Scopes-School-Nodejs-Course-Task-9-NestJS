@@ -10,7 +10,7 @@ class User {
    *
    * @param {Object} User - User
    */
-  constructor({ name, login, password } = {}) {
+  constructor({ name, login, password }) {
     /**
      * @property {uuid()} id - id
      */

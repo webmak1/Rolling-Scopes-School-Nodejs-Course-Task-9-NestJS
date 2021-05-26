@@ -48,7 +48,7 @@ const getTask = async (boardId, taskId) => {
 /**
  * ### Create Task
  * @param {Task} task - Task body
- * @returns {Promise<Task | {}>} - Promise with Created Task or Empty object
+ * @returns {Promise<Task>} - Promise with Created Task or Empty object
  */
 const createTask = async (task) => {
   DBTasks.push(task);

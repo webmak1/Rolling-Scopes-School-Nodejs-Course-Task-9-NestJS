@@ -32,7 +32,7 @@ const get = async (id) => {
 /**
  * ### Create Board
  * @param {object} board - Board body
- * @returns {Promise<Board | {}>} - Promise with Created Board or Empty object
+ * @returns {Promise<Board>} - Promise with Created Board or Empty object
  */
 const create = (board) => DBBoards.createBoard(board);
 

@@ -1,7 +1,10 @@
 // @ts-check
 
+const express = require('express');
 const tasksRepo = require('./task.memory.repository');
 const Task = require('./task.model');
+
+console.log('**Express Version: ', express.version);
 
 /**
  * ### Get All Tasks
@@ -14,7 +17,7 @@ const getAll = async () => {
 
 /**
  * ### Get Task
- * @param {string} req - request
+ * @param {express.Request} req
  * @returns {Promise<Task>} - Promise with a Single Task
  */
 const get = async (req) => {
@@ -25,8 +28,8 @@ const get = async (req) => {
 
 /**
  * ### Create Task
-// * @param {string} req - request
- * @returns {Promise<Task | {}>} - Promise with Created Task or Empty object
+ * @param {express.Request} req
+ * @returns {Promise<Task>} - Promise with Created Task or Empty object
  */
 const create = async (req) => {
   const { title, order, description, userId, columnId } = req.body;
@@ -47,7 +50,7 @@ const create = async (req) => {
 
 /**
  * ### Update Task
- * @param {Request} req - req
+ * @param {express.Request} req
  * @returns {Promise<Task>} - Promise with Updated Task
  */
 const update = async (req) => {
@@ -60,7 +63,7 @@ const update = async (req) => {
 
 /**
  * ### Remove Task
- * @param {Request} req - req
+ * @param {express.Request} req
  * @returns {Promise<Task>} - Promise with Deleted Task
  */
 const remove = async (req) => {

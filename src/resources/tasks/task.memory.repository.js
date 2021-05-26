@@ -37,7 +37,7 @@ const get = async (boardId, taskId) => {
 /**
  * ### Create Task
  * @param {Task} task - Task body
- * @returns {Promise<Task | {}>} - Promise with Created Task or Empty object
+ * @returns {Promise<Task>} - Promise with Created Task or Empty object
  */
 const create = (task) => DBTasks.createTask(task);
 

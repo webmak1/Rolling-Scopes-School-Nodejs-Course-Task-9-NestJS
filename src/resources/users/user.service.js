@@ -1,11 +1,22 @@
 // @ts-check
 
+const express = require('express');
 const usersRepo = require('./user.memory.repository');
 const User = require('./user.model');
 
+console.log('**Express Version: ', express.version);
+
+/**
+ * A Public User Data
+ * @typedef {Object} PublicUserData - Public User Data
+ * @property {string} id - id
+ * @property {string} name - name
+ * @property {string} login - login
+ */
+
 /**
  * ### Get All Users in Service
-// * @returns {Promise<{ id, name, login }[]>} - Promise with All Users in Service
+ * @returns {Promise<PublicUserData[]>} - Promise with All Users
  */
 const getAll = async () => {
   const users = await usersRepo.getAll();
@@ -14,7 +25,7 @@ const getAll = async () => {
 
 /**
  * ### Get User by ID in Service
-// * @param {Request} req - Request
+ * @param {express.Request} req
  * @returns {Promise<{ id, name, login }>} - Promise with User by ID in Service
  */
 const get = async (req) => {
@@ -24,7 +35,7 @@ const get = async (req) => {
 
 /**
  * ### Get User by ID in Service
-// * @param {Request} req - Request
+ * @param {express.Request} req
  * @returns {Promise<{ id, name, login } | {}>} - Promise with User by ID in Service
  */
 const create = async (req) => {

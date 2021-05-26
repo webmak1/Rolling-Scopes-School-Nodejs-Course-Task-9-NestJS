@@ -1,7 +1,10 @@
 // @ts-check
 
+const express = require('express');
 const boardsRepo = require('./board.memory.repository');
 const Board = require('./board.model');
+
+console.log('**Express Version: ', express.version);
 
 /**
  * ### Get All Boards
@@ -14,7 +17,7 @@ const getAll = async () => {
 
 /**
  * ### Get Board
- * @param {Request} req - request
+ * @param {express.Request} req
  * @returns {Promise<Board>} - Promise with a Single Board
  */
 const get = async (req) => {
@@ -25,8 +28,8 @@ const get = async (req) => {
 
 /**
  * ### Create Board
- * @param {Request} req - request
- * @returns {Promise<Board | {}>} - Promise with Created Board or Empty object
+ * @param {express.Request} req
+ * @returns {Promise<Board>} - Promise with Created Board or Empty object
  */
 const create = async (req) => {
   const board = await boardsRepo.create(
@@ -40,7 +43,7 @@ const create = async (req) => {
 
 /**
  * ### Update Board
- * @param {Request} req - request
+ * @param {express.Request} req
  * @returns {Promise<Board>} - Promise with Updated Board
  */
 const update = async (req) => {
@@ -50,7 +53,7 @@ const update = async (req) => {
 
 /**
  * ### Remove Board
- * @param {Request} req - request
+ * @param {express.Request} req
  * @returns {Promise<Board>} - Promise with Deleted Board
  */
 const remove = async (req) => {

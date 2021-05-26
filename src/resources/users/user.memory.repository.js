@@ -33,7 +33,7 @@ const get = async (id) => {
 /**
  * ### Create User
  * @param {User} user - User
- * @returns {Promise<User | {}>} - Promise with Created User or Empty object
+ * @returns {Promise<User>} - Promise with Created User or Empty object
  */
 const create = (user) => DBUsers.createUser(user);
 
