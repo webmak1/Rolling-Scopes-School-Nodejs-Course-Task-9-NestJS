@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: resources/boards/board.model.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,58 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: resources/boards/board.model.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-check
 
+const { v4: uuid } = require('uuid');
 
-    <h3> </h3>
+/**
+ *  ### Class to create a Board object
+ */
+class Board {
+  /**
+   *
+   * @param {Object} Board - Board
+   */
+  constructor({ title, columns } = {}) {
+    /**
+     * @property {uuid()} id - id
+     */
+    this.id = uuid();
+    /**
+     * @property {string} title - title
+     */
+    this.title = title;
+    /**
+     * @property {string} columns - columns
+     */
+    this.columns = columns;
+  }
 
+  /**
+   * ### Return Board public data
+   * @property {Function} toResponse - Returns Board public data
+   * @param {Board} board - Board
+   * @returns { { id, title, columns }} - { id, title, columns }
+   */
+  static toResponse(board) {
+    const { id, title, columns } = board;
+    return { id, title, columns };
+  }
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = Board;
+</code></pre>
+        </article>
+    </section>
 
 
 

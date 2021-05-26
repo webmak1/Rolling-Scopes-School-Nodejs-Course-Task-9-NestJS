@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: resources/users/user.memory.repository.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,73 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: resources/users/user.memory.repository.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-check
 
+const DBUsers = require('../../common/InMemoryDbUsers');
 
-    <h3> </h3>
+/**
+ * A User
+ * @typedef {Object} User - User
+ * @property {string} id - Id
+ * @property {string} name - Name
+ * @property {string} login - Login
+ * @property {string} password - Password
+ */
 
+/**
+ * ### Get All Users in Repository
+ * @returns {Promise&lt;User[]>} - Promise with All Users in Repository
+ */
+const getAll = async () => DBUsers.getAllUsers();
 
+/**
+ * ### Get User
+ * @param {string} id - user id
+ * @returns {Promise&lt;User>} - Promise with a Single User
+ */
+const get = async (id) => {
+  const user = await DBUsers.getUser(id);
+  if (!user) {
+    throw new Error(`[App Error] The user with id: ${id} was not found!`);
+  }
+  return user;
+};
 
+/**
+ * ### Create User
+ * @param {User} user - User
+ * @returns {Promise&lt;User | {}>} - Promise with Created User or Empty object
+ */
+const create = (user) => DBUsers.createUser(user);
 
+/**
+ * ### Update User
+ * @param {string} id - User Id
+ * @param {object} newUser - new User
+ * @returns {Promise&lt;User>} - Promise with Updated User
+ */
+const update = (id, newUser) => DBUsers.updateUser(id, newUser);
 
+/**
+ * ### Remove User
+ * @param {string} id - User Id
+ * @returns {Promise&lt;User>} - Promise with Deleted User
+ */
+const remove = (id) => DBUsers.removeUser(id);
 
-
-
-
-
-    
-
-
-
-
-
+module.exports = { getAll, get, create, update, remove };
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -2,21 +2,35 @@
 
 const { v4: uuid } = require('uuid');
 
+/**
+ *  ### Class to create a Board object
+ */
 class Board {
-  constructor({
-    id = uuid(),
-    title = 'DefaultTitle',
-    columns = [
-      { id: uuid(), title: 'Default Column Title 1', order: '1' },
-      { id: uuid(), title: 'Default Column Title 2', order: '2' },
-      { id: uuid(), title: 'Default Column Title 3', order: '3' },
-    ],
-  } = {}) {
-    this.id = id;
+  /**
+   *
+   * @param {Object} Board - Board
+   */
+  constructor({ title, columns } = {}) {
+    /**
+     * @property {uuid()} id - id
+     */
+    this.id = uuid();
+    /**
+     * @property {string} title - title
+     */
     this.title = title;
+    /**
+     * @property {string} columns - columns
+     */
     this.columns = columns;
   }
 
+  /**
+   * ### Return Board public data
+   * @property {Function} toResponse - Returns Board public data
+   * @param {Board} board - Board
+   * @returns { { id, title, columns }} - { id, title, columns }
+   */
   static toResponse(board) {
     const { id, title, columns } = board;
     return { id, title, columns };

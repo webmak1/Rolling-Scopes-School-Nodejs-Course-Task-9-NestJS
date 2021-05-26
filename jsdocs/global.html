@@ -138,7 +138,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line17">line 17</a>
+        <a href="common_InMemoryDbBoards.js.html">common/InMemoryDbBoards.js</a>, <a href="common_InMemoryDbBoards.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -196,7 +196,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line20">line 20</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -254,7 +254,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line18">line 18</a>
+        <a href="common_InMemoryDbUsers.js.html">common/InMemoryDbUsers.js</a>, <a href="common_InMemoryDbUsers.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -275,6 +275,489 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(board)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#Board">Board</a>|{})>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Create Board</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>board</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Board body</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_boards_board.memory.repository.js.html">resources/boards/board.memory.repository.js</a>, <a href="resources_boards_board.memory.repository.js.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Created Board or Empty object</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;(<a href="global.html#Board">Board</a>|{})></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(task)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#Task">Task</a>|{})>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Create Task</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>task</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Task">Task</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Task body</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_tasks_task.memory.repository.js.html">resources/tasks/task.memory.repository.js</a>, <a href="resources_tasks_task.memory.repository.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Created Task or Empty object</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;(<a href="global.html#Task">Task</a>|{})></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="create"><span class="type-signature"></span>create<span class="signature">(user)</span><span class="type-signature"> &rarr; {Promise.&lt;(<a href="global.html#User">User</a>|{})>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Create User</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#User">User</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_users_user.memory.repository.js.html">resources/users/user.memory.repository.js</a>, <a href="resources_users_user.memory.repository.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Created User or Empty object</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;(<a href="global.html#User">User</a>|{})></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
 
         
             
@@ -383,7 +866,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line40">line 40</a>
+        <a href="common_InMemoryDbBoards.js.html">common/InMemoryDbBoards.js</a>, <a href="common_InMemoryDbBoards.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -493,7 +976,7 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#Task">Task</a></span>
 
 
             
@@ -544,7 +1027,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line53">line 53</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -654,7 +1137,7 @@
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#User">User</a></span>
 
 
             
@@ -705,7 +1188,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line41">line 41</a>
+        <a href="common_InMemoryDbUsers.js.html">common/InMemoryDbUsers.js</a>, <a href="common_InMemoryDbUsers.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -866,7 +1349,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line74">line 74</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -909,6 +1392,848 @@
     <dd>
         
 <span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Get Board</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>board id</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_boards_board.memory.repository.js.html">resources/boards/board.memory.repository.js</a>, <a href="resources_boards_board.memory.repository.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with a Single Board</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Board">Board</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(boardId, taskId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Get Task</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>boardId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>board id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>task id</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_tasks_task.memory.repository.js.html">resources/tasks/task.memory.repository.js</a>, <a href="resources_tasks_task.memory.repository.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with a Single Task</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Task">Task</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Get User</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>user id</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_users_user.memory.repository.js.html">resources/users/user.memory.repository.js</a>, <a href="resources_users_user.memory.repository.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with a Single User</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#User">User</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getAll"><span class="type-signature">(async) </span>getAll<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#Board">Board</a>>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Get All Boards</h3>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_boards_board.memory.repository.js.html">resources/boards/board.memory.repository.js</a>, <a href="resources_boards_board.memory.repository.js.html#line17">line 17</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with All Boards</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#Board">Board</a>>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getAll"><span class="type-signature">(async) </span>getAll<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#Task">Task</a>>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Get All Tasks</h3>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_tasks_task.memory.repository.js.html">resources/tasks/task.memory.repository.js</a>, <a href="resources_tasks_task.memory.repository.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with All Tasks</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#Task">Task</a>>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getAll"><span class="type-signature">(async) </span>getAll<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#User">User</a>>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Get All Users in Repository</h3>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_users_user.memory.repository.js.html">resources/users/user.memory.repository.js</a>, <a href="resources_users_user.memory.repository.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with All Users in Repository</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#User">User</a>>></span>
 
 
     </dd>
@@ -978,7 +2303,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line23">line 23</a>
+        <a href="common_InMemoryDbBoards.js.html">common/InMemoryDbBoards.js</a>, <a href="common_InMemoryDbBoards.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -1090,7 +2415,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line26">line 26</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -1202,7 +2527,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line24">line 24</a>
+        <a href="common_InMemoryDbUsers.js.html">common/InMemoryDbUsers.js</a>, <a href="common_InMemoryDbUsers.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -1363,7 +2688,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line30">line 30</a>
+        <a href="common_InMemoryDbBoards.js.html">common/InMemoryDbBoards.js</a>, <a href="common_InMemoryDbBoards.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -1547,7 +2872,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line34">line 34</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -1708,7 +3033,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line31">line 31</a>
+        <a href="common_InMemoryDbUsers.js.html">common/InMemoryDbUsers.js</a>, <a href="common_InMemoryDbUsers.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -1739,6 +3064,489 @@
 <div class="param-desc">
     <ul>
 <li>Promise with a Single User</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#User">User</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(boardId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Remove Board</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>boardId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Board Id</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_boards_board.memory.repository.js.html">resources/boards/board.memory.repository.js</a>, <a href="resources_boards_board.memory.repository.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Deleted Board</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Board">Board</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Remove Task</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Task Id</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_tasks_task.memory.repository.js.html">resources/tasks/task.memory.repository.js</a>, <a href="resources_tasks_task.memory.repository.js.html#line59">line 59</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Deleted Task</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Task">Task</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Remove User</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User Id</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_users_user.memory.repository.js.html">resources/users/user.memory.repository.js</a>, <a href="resources_users_user.memory.repository.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Deleted User</li>
 </ul>
 </div>
 
@@ -1869,7 +3677,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line50">line 50</a>
+        <a href="common_InMemoryDbBoards.js.html">common/InMemoryDbBoards.js</a>, <a href="common_InMemoryDbBoards.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -2030,7 +3838,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line63">line 63</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -2191,7 +3999,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line101">line 101</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -2352,7 +4160,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line51">line 51</a>
+        <a href="common_InMemoryDbUsers.js.html">common/InMemoryDbUsers.js</a>, <a href="common_InMemoryDbUsers.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -2412,7 +4220,7 @@
     
 
     
-    <h4 class="name" id="updateBoard"><span class="type-signature">(async) </span>updateBoard<span class="signature">(id, body)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(id, newBoard)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
     
 
     
@@ -2479,13 +4287,13 @@
 
         <tr>
             
-                <td class="name"><code>body</code></td>
+                <td class="name"><code>newBoard</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#Board">Board</a></span>
 
 
             
@@ -2495,7 +4303,7 @@
 
             
 
-            <td class="description last"><p>Board body</p></td>
+            <td class="description last"><p>New Board</p></td>
         </tr>
 
     
@@ -2536,7 +4344,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line63">line 63</a>
+        <a href="resources_boards_board.memory.repository.js.html">resources/boards/board.memory.repository.js</a>, <a href="resources_boards_board.memory.repository.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -2596,7 +4404,7 @@
     
 
     
-    <h4 class="name" id="updateTask"><span class="type-signature">(async) </span>updateTask<span class="signature">(boardId, taskId, body)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(boardId, taskId, newTask)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
     
 
     
@@ -2686,13 +4494,13 @@
 
         <tr>
             
-                <td class="name"><code>body</code></td>
+                <td class="name"><code>newTask</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">object</span>
+<span class="param-type"><a href="global.html#Task">Task</a></span>
 
 
             
@@ -2702,7 +4510,7 @@
 
             
 
-            <td class="description last"><p>Task Body</p></td>
+            <td class="description last"><p>new Task</p></td>
         </tr>
 
     
@@ -2743,7 +4551,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line90">line 90</a>
+        <a href="resources_tasks_task.memory.repository.js.html">resources/tasks/task.memory.repository.js</a>, <a href="resources_tasks_task.memory.repository.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -2803,7 +4611,7 @@
     
 
     
-    <h4 class="name" id="updateUser"><span class="type-signature">(async) </span>updateUser<span class="signature">(id, body)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(id, newUser)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
     
 
     
@@ -2870,7 +4678,7 @@
 
         <tr>
             
-                <td class="name"><code>body</code></td>
+                <td class="name"><code>newUser</code></td>
             
 
             <td class="type">
@@ -2886,7 +4694,7 @@
 
             
 
-            <td class="description last"><p>User Body</p></td>
+            <td class="description last"><p>new User</p></td>
         </tr>
 
     
@@ -2927,7 +4735,582 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line64">line 64</a>
+        <a href="resources_users_user.memory.repository.js.html">resources/users/user.memory.repository.js</a>, <a href="resources_users_user.memory.repository.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Updated User</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#User">User</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateBoard"><span class="type-signature">(async) </span>updateBoard<span class="signature">(id, newBoard)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Board">Board</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Update Board</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Board Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newBoard</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Board">Board</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>New Board</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common_InMemoryDbBoards.js.html">common/InMemoryDbBoards.js</a>, <a href="common_InMemoryDbBoards.js.html#line63">line 63</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Updated Board</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Board">Board</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateTask"><span class="type-signature">(async) </span>updateTask<span class="signature">(boardId, taskId, newTask)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Task">Task</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Update Task</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>boardId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Board Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Task Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newTask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Task">Task</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>new Task</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line90">line 90</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>Promise with Updated Task</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#Task">Task</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateUser"><span class="type-signature">(async) </span>updateUser<span class="signature">(id, newUser)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#User">User</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <h3>Update User</h3>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newUser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>new User</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common_InMemoryDbUsers.js.html">common/InMemoryDbUsers.js</a>, <a href="common_InMemoryDbUsers.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -3141,7 +5524,177 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbBoards.js.html">InMemoryDbBoards.js</a>, <a href="InMemoryDbBoards.js.html#line6">line 6</a>
+        <a href="common_InMemoryDbBoards.js.html">common/InMemoryDbBoards.js</a>, <a href="common_InMemoryDbBoards.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="Board">Board</h4>
+
+
+
+
+<div class="description">
+    <p>A Board</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columns</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Columns</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_boards_board.memory.repository.js.html">resources/boards/board.memory.repository.js</a>, <a href="resources_boards_board.memory.repository.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -3403,7 +5956,269 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbTasks.js.html">InMemoryDbTasks.js</a>, <a href="InMemoryDbTasks.js.html#line5">line 5</a>
+        <a href="common_InMemoryDbTasks.js.html">common/InMemoryDbTasks.js</a>, <a href="common_InMemoryDbTasks.js.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="Task">Task</h4>
+
+
+
+
+<div class="description">
+    <p>A Tasks</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Title</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>order</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Order</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Description</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>boardId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Board Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>columnId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Column Id</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_tasks_task.memory.repository.js.html">resources/tasks/task.memory.repository.js</a>, <a href="resources_tasks_task.memory.repository.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -3596,7 +6411,200 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="InMemoryDbUsers.js.html">InMemoryDbUsers.js</a>, <a href="InMemoryDbUsers.js.html#line6">line 6</a>
+        <a href="common_InMemoryDbUsers.js.html">common/InMemoryDbUsers.js</a>, <a href="common_InMemoryDbUsers.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="User">User</h4>
+
+
+
+
+<div class="description">
+    <p>A User</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Id</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>login</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Login</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>password</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Password</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="resources_users_user.memory.repository.js.html">resources/users/user.memory.repository.js</a>, <a href="resources_users_user.memory.repository.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -3626,13 +6634,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createBoard">createBoard</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#DBBoards">DBBoards</a></li><li><a href="global.html#DBTasks">DBTasks</a></li><li><a href="global.html#DBUsers">DBUsers</a></li><li><a href="global.html#deleteUserFromTasks">deleteUserFromTasks</a></li><li><a href="global.html#getAllBoards">getAllBoards</a></li><li><a href="global.html#getAllTasks">getAllTasks</a></li><li><a href="global.html#getAllUsers">getAllUsers</a></li><li><a href="global.html#getBoard">getBoard</a></li><li><a href="global.html#getTask">getTask</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#removeBoard">removeBoard</a></li><li><a href="global.html#removeTask">removeTask</a></li><li><a href="global.html#removeTaskByBoardId">removeTaskByBoardId</a></li><li><a href="global.html#removeUser">removeUser</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateTask">updateTask</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="global.html#Board">Board</a></li><li><a href="global.html#Task">Task</a></li><li><a href="global.html#User">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#create">create</a></li><li><a href="global.html#createBoard">createBoard</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#createUser">createUser</a></li><li><a href="global.html#DBBoards">DBBoards</a></li><li><a href="global.html#DBTasks">DBTasks</a></li><li><a href="global.html#DBUsers">DBUsers</a></li><li><a href="global.html#deleteUserFromTasks">deleteUserFromTasks</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getAll">getAll</a></li><li><a href="global.html#getAllBoards">getAllBoards</a></li><li><a href="global.html#getAllTasks">getAllTasks</a></li><li><a href="global.html#getAllUsers">getAllUsers</a></li><li><a href="global.html#getBoard">getBoard</a></li><li><a href="global.html#getTask">getTask</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeBoard">removeBoard</a></li><li><a href="global.html#removeTask">removeTask</a></li><li><a href="global.html#removeTaskByBoardId">removeTaskByBoardId</a></li><li><a href="global.html#removeUser">removeUser</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateBoard">updateBoard</a></li><li><a href="global.html#updateTask">updateTask</a></li><li><a href="global.html#updateUser">updateUser</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue May 25 2021 22:05:55 GMT+0300 (Moscow Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed May 26 2021 04:56:07 GMT+0300 (Moscow Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

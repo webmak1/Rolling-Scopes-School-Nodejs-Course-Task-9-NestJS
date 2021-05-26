@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: resources/users/user.model.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,65 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: resources/users/user.model.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-check
 
+const { v4: uuid } = require('uuid');
 
-    <h3> </h3>
+/**
+ *  ### Class to create a User object
+ */
+class User {
+  /**
+   *
+   * @param {Object} User - User
+   */
+  constructor({ name, login, password } = {}) {
+    /**
+     * @property {uuid()} id - id
+     */
+    this.id = uuid();
 
+    /**
+     * @property {string} name - name
+     */
+    this.name = name;
 
+    /**
+     * @property {string} login - login
+     */
+    this.login = login;
 
+    /**
+     * @property {string} password - password
+     */
+    this.password = password;
+  }
 
+  /**
+   * ### Return User public data
+   * @property {Function} toResponse - Returns User public data
+   * @param {User} user - User
+   * @returns { {id, name, login }} - {id, name, login}
+   */
+  static toResponse(user) {
+    const { id, name, login } = user;
+    return { id, name, login };
+  }
+}
 
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = User;
+</code></pre>
+        </article>
+    </section>
 
 
 

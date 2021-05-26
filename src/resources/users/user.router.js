@@ -4,7 +4,6 @@ const { StatusCodes } = require('http-status-codes');
 const router = require('express').Router();
 const usersService = require('./user.service');
 
-// GET ALL
 router.route('/').get(async (_req, res) => {
   try {
     return res.json(await usersService.getAll());

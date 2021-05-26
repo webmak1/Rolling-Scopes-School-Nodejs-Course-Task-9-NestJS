@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: resources/boards/board.memory.repository.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,78 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: resources/boards/board.memory.repository.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-check
 
+const DBBoards = require('../../common/InMemoryDbBoards');
 
-    <h3> </h3>
+/**
+ * A Board
+ * @typedef {Object} Board - Board
+ * @property {string} id - Id
+ * @property {string} title - Title
+ * @property {string} columns - Columns
+ */
 
+/**
+ * ### Get All Boards
+ * @returns {Promise&lt;Board[]>} - Promise with All Boards
+ */
+const getAll = async () => DBBoards.getAllBoards();
 
+/**
+ * ### Get Board
+ * @param {string} id - board id
+ * @returns {Promise&lt;Board>} - Promise with a Single Board
+ */
+const get = async (id) => {
+  const board = await DBBoards.getBoard(id);
+  if (!board) {
+    throw new Error(`[App Error] The board with id: ${id} was not found!`);
+  }
+  return board;
+};
 
+/**
+ * ### Create Board
+ * @param {object} board - Board body
+ * @returns {Promise&lt;Board | {}>} - Promise with Created Board or Empty object
+ */
+const create = (board) => DBBoards.createBoard(board);
 
+/**
+ * ### Update Board
+ * @param {string} id - Board Id
+ * @param {Board} newBoard - New Board
+ * @returns {Promise&lt;Board>} - Promise with Updated Board
+ */
+const update = (id, newBoard) => DBBoards.updateBoard(id, newBoard);
 
+/**
+ * ### Remove Board
+ * @param {string} boardId - Board Id
+ * @returns {Promise&lt;Board>} - Promise with Deleted Board
+ */
+const remove = (boardId) => DBBoards.removeBoard(boardId);
 
-
-
-
-
-    
-
-
-
-
-
+module.exports = {
+  getAll,
+  get,
+  create,
+  update,
+  remove,
+};
+</code></pre>
+        </article>
+    </section>
 
 
 
