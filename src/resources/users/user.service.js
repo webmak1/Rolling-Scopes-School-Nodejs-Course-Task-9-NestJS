@@ -14,10 +14,11 @@ const get = async (req) => {
 };
 
 const create = async (req) => {
+  const { login, password, name } = req.body;
   const user = new User({
-    login: req.body.login,
-    password: req.body.password,
-    name: req.body.name,
+    login,
+    password,
+    name,
   });
 
   const createdUser = await usersRepo.create(user);

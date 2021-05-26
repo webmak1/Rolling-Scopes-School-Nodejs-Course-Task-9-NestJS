@@ -47,7 +47,7 @@ const getTask = async (boardId, taskId) => {
 
 /**
  * ### Create Task
- * @param {object} task - Task body
+ * @param {Task} task - Task body
  * @returns {Promise<Task | {}>} - Promise with Created Task or Empty object
  */
 const createTask = async (task) => {
@@ -84,12 +84,12 @@ const deleteUserFromTasks = async (userId) => {
  * ### Update Task
  * @param {string} boardId - Board Id
  * @param {string} taskId - Task Id
- * @param {object} body - Task Body
+ * @param {Task} newTask - new Task
  * @returns {Promise<Task>} - Promise with Updated Task
  */
-const updateTask = async (boardId, taskId, body) => {
+const updateTask = async (boardId, taskId, newTask) => {
   await removeTask(taskId);
-  await createTask(body);
+  await createTask(newTask);
   return getTask(null, taskId);
 };
 

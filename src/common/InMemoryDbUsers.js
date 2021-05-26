@@ -35,7 +35,7 @@ const getUser = async (id) => {
 
 /**
  * ### Create User
- * @param {object} user - User body
+ * @param {User} user - User body
  * @returns {Promise<User | {}>} - Promise with Created User or Empty object
  */
 const createUser = async (user) => {
@@ -58,12 +58,12 @@ const removeUser = async (userId) => {
 /**
  * ### Update User
  * @param {string} id - User Id
- * @param {object} body - User Body
+ * @param {object} newUser - new User
  * @returns {Promise<User>} - Promise with Updated User
  */
-const updateUser = async (id, body) => {
+const updateUser = async (id, newUser) => {
   await removeUser(id);
-  await createUser(body);
+  await createUser(newUser);
   return getUser(id);
 };
 

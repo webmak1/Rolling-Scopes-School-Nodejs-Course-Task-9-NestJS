@@ -57,12 +57,12 @@ const removeBoard = async (boardId) => {
 /**
  * ### Update Board
  * @param {string} id - Board Id
- * @param {object} body - Board body
+ * @param {Board} newBoard - New Board
  * @returns {Promise<Board>} - Promise with Updated Board
  */
-const updateBoard = async (id, body) => {
+const updateBoard = async (id, newBoard) => {
   await removeBoard(id);
-  await createBoard(body);
+  await createBoard(newBoard);
   return getBoard(id);
 };
 
