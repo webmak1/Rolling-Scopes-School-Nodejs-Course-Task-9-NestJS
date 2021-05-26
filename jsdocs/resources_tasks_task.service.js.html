@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: resources/users/user.memory.repository.js</title>
+    <title>JSDoc: Source: resources/tasks/task.service.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: resources/users/user.memory.repository.js</h1>
+    <h1 class="page-title">Source: resources/tasks/task.service.js</h1>
 
     
 
@@ -28,57 +28,73 @@
         <article>
             <pre class="prettyprint source linenums"><code>// @ts-check
 
-const DBUsers = require('../../common/InMemoryDbUsers');
+const tasksRepo = require('./task.memory.repository');
+const Task = require('./task.model');
 
 /**
- * A User
- * @typedef {Object} User - User
- * @property {string} id - Id
- * @property {string} name - Name
- * @property {string} login - Login
- * @property {string} password - Password
+ * ### Get All Tasks
+ * @returns {Promise&lt;Task[]>} - Promise with All Tasks
  */
-
-/**
- * ### Get All Users in Repository
- * @returns {Promise&lt;User[]>} - Promise with All Users in Repository
- */
-const getAll = async () => DBUsers.getAllUsers();
-
-/**
- * ### Get User
- * @param {string} id - user id
- * @returns {Promise&lt;User>} - Promise with a Single User
- */
-const get = async (id) => {
-  const user = await DBUsers.getUser(id);
-  if (!user) {
-    throw new Error(`[App Error] The user with id: ${id} was not found!`);
-  }
-  return user;
+const getAll = async () => {
+  const tasks = await tasksRepo.getAll();
+  return tasks.map(Task.toResponse);
 };
 
 /**
- * ### Create User
- * @param {User} user - User
- * @returns {Promise&lt;User | {}>} - Promise with Created User or Empty object
+ * ### Get Task
+ * @param {string} req - request
+ * @returns {Promise&lt;Task>} - Promise with a Single Task
  */
-const create = (user) => DBUsers.createUser(user);
+const get = async (req) => {
+  const { boardId, id: taskId } = req.params;
+  const task = await tasksRepo.get(boardId, taskId);
+  return Task.toResponse(task);
+};
 
 /**
- * ### Update User
- * @param {string} id - User Id
- * @param {object} newUser - new User
- * @returns {Promise&lt;User>} - Promise with Updated User
+ * ### Create Task
+// * @param {string} req - request
+ * @returns {Promise&lt;Task | {}>} - Promise with Created Task or Empty object
  */
-const update = (id, newUser) => DBUsers.updateUser(id, newUser);
+const create = async (req) => {
+  const { title, order, description, userId, columnId } = req.body;
+  const { boardId } = req.params;
+
+  const task = await tasksRepo.create(
+    new Task({
+      title,
+      order,
+      description,
+      userId,
+      boardId,
+      columnId,
+    })
+  );
+  return Task.toResponse(task);
+};
 
 /**
- * ### Remove User
- * @param {string} id - User Id
- * @returns {Promise&lt;User>} - Promise with Deleted User
+ * ### Update Task
+ * @param {Request} req - req
+ * @returns {Promise&lt;Task>} - Promise with Updated Task
  */
-const remove = (id) => DBUsers.removeUser(id);
+const update = async (req) => {
+  const { body } = req;
+  const { boardId, id: taskId } = req.params;
+
+  const updatedTask = await tasksRepo.update(boardId, taskId, body);
+  return Task.toResponse(updatedTask);
+};
+
+/**
+ * ### Remove Task
+ * @param {Request} req - req
+ * @returns {Promise&lt;Task>} - Promise with Deleted Task
+ */
+const remove = async (req) => {
+  const task = await tasksRepo.remove(req.params.id);
+  return Task.toResponse(task);
+};
 
 module.exports = { getAll, get, create, update, remove };
 </code></pre>
