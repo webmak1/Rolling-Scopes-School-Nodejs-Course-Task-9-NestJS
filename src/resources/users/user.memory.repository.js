@@ -26,21 +26,30 @@ const get = async (id) => {
   const user = await DBUsers.getUser(id);
   if (!user) {
     throw new Error(`[App Error] The user with id: ${id} was not found!`);
-  } else if (user.lenght > 1) {
-    throw new Error('[App Error] DBUsers is corrupted!');
   }
   return user;
 };
 
 /**
  * ### Create User
- * @param {User} user - User body
+ * @param {User} user - User
  * @returns {Promise<User | {}>} - Promise with Created User or Empty object
  */
 const create = (user) => DBUsers.createUser(user);
 
-const update = (id, body) => DBUsers.updateUser(id, body);
+/**
+ * ### Update User
+ * @param {string} id - User Id
+ * @param {object} newUser - new User
+ * @returns {Promise<User>} - Promise with Updated User
+ */
+const update = (id, newUser) => DBUsers.updateUser(id, newUser);
 
+/**
+ * ### Remove User
+ * @param {string} id - User Id
+ * @returns {Promise<User>} - Promise with Deleted User
+ */
 const remove = (id) => DBUsers.removeUser(id);
 
 module.exports = { getAll, get, create, update, remove };
