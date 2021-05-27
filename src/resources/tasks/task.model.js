@@ -43,9 +43,8 @@ class Task {
 
   /**
    * ### Return Task public data
-   * @property {Function} toResponse - Returns Task public data
    * @param {Task} task - Task
-   * @returns { { id, title, order, description, userId, boardId, columnId }} - { id, title, order, description, userId, boardId, columnId }
+   * @returns {Task}
    */
   static toResponse(task) {
     const { id, title, order, description, userId, boardId, columnId } = task;

@@ -4,8 +4,6 @@ const express = require('express');
 const usersRepo = require('./user.memory.repository');
 const User = require('./user.model');
 
-console.log('**Express Version: ', express.version);
-
 /**
  * A Public User Data
  * @typedef {Object} PublicUserData - Public User Data
@@ -16,7 +14,7 @@ console.log('**Express Version: ', express.version);
 
 /**
  * ### Get All Users in Service
- * @returns {Promise<PublicUserData[]>} - Promise with All Users
+ * @returns {Promise<PublicUserData[]>} - Promise with All Users in Service
  */
 const getAll = async () => {
   const users = await usersRepo.getAll();
@@ -26,7 +24,7 @@ const getAll = async () => {
 /**
  * ### Get User by ID in Service
  * @param {express.Request} req
- * @returns {Promise<{ id, name, login }>} - Promise with User by ID in Service
+ * @returns {Promise<PublicUserData>} - Promise with User by ID in Service
  */
 const get = async (req) => {
   const user = await usersRepo.get(req.params.id);
@@ -34,9 +32,9 @@ const get = async (req) => {
 };
 
 /**
- * ### Get User by ID in Service
+ * ### Create User by ID in Service
  * @param {express.Request} req
- * @returns {Promise<{ id, name, login } | {}>} - Promise with User by ID in Service
+ * @returns {Promise<PublicUserData | {}>} - Promise with Created User in Service
  */
 const create = async (req) => {
   const { login, password, name } = req.body;
@@ -45,17 +43,15 @@ const create = async (req) => {
     password,
     name,
   });
-
   const createdUser = await usersRepo.create(user);
-
   return User.toResponse(createdUser);
 };
 
 /**
- * ### Update User
+ * ### Update User in Service
  * @param {string} id - User Id
- * @param {object} newUser - new User
- * @returns {Promise<{ id, name, login }>}  - Promise with Updated User
+ * @param {User} newUser - new User
+ * @returns {Promise<PublicUserData>}  - Promise with Updated User in Service
  */
 const update = async (id, newUser) => {
   const user = await usersRepo.update(id, newUser);
@@ -63,13 +59,18 @@ const update = async (id, newUser) => {
 };
 
 /**
- * ### Remove User
+ * ### Remove User in Service
  * @param {string} id - User Id
- * @returns {Promise<{ id, name, login }>} - Promise with Deleted User
+ * @returns {Promise<PublicUserData>} - Promise with Deleted User in Service
  */
 const remove = async (id) => {
   const user = await usersRepo.remove(id);
   return User.toResponse(user);
 };
+
+// Dummy for linter
+if (process.env.level) {
+  console.log('**Express Version: ', express.version);
+}
 
 module.exports = { getAll, get, create, remove, update };

@@ -29,7 +29,7 @@ class Board {
    * ### Return Board public data
    * @property {Function} toResponse - Returns Board public data
    * @param {Board} board - Board
-   * @returns { { id, title, columns }} - { id, title, columns }
+   * @returns { Board} - Board
    */
   static toResponse(board) {
     const { id, title, columns } = board;

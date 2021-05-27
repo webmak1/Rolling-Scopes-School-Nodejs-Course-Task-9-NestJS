@@ -11,15 +11,15 @@ const DBBoards = require('../../common/InMemoryDbBoards');
  */
 
 /**
- * ### Get All Boards
- * @returns {Promise<Board[]>} - Promise with All Boards
+ * ### Get All Boards in Repository
+ * @returns {Promise<Board[]>} - Promise with All Boards in Repository
  */
 const getAll = async () => DBBoards.getAllBoards();
 
 /**
- * ### Get Board
+ * ### Get Board By Id in Repository
  * @param {string} id - board id
- * @returns {Promise<Board>} - Promise with a Single Board
+ * @returns {Promise<Board>} - Promise with a Single Board in Repository
  */
 const get = async (id) => {
   const board = await DBBoards.getBoard(id);
@@ -30,24 +30,24 @@ const get = async (id) => {
 };
 
 /**
- * ### Create Board
+ * ### Create Board in Repository
  * @param {object} board - Board body
- * @returns {Promise<Board>} - Promise with Created Board or Empty object
+ * @returns {Promise<Board>} - Promise with Created Board in Repository
  */
 const create = (board) => DBBoards.createBoard(board);
 
 /**
- * ### Update Board
+ * ### Update Board in Repository
  * @param {string} id - Board Id
  * @param {Board} newBoard - New Board
- * @returns {Promise<Board>} - Promise with Updated Board
+ * @returns {Promise<Board>} - Promise with Updated Board in Repository
  */
 const update = (id, newBoard) => DBBoards.updateBoard(id, newBoard);
 
 /**
- * ### Remove Board
+ * ### Remove Board in Repository
  * @param {string} boardId - Board Id
- * @returns {Promise<Board>} - Promise with Deleted Board
+ * @returns {Promise<Board>} - Promise with Deleted Board in Repository
  */
 const remove = (boardId) => DBBoards.removeBoard(boardId);
 

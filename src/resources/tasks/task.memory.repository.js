@@ -15,16 +15,16 @@ const DBTasks = require('../../common/InMemoryDbTasks');
  */
 
 /**
- * ### Get All Tasks
- * @returns {Promise<Task[]>} - Promise with All Tasks
+ * ### Get All Tasks in Repository
+ * @returns {Promise<Task[]>} - Promise with All Tasks in Repository
  */
 const getAll = async () => DBTasks.getAllTasks();
 
 /**
- * ### Get Task
+ * ### Get Task in Repository
  * @param {string} boardId - board id
  * @param {string} taskId - task id
- * @returns {Promise<Task>} - Promise with a Single Task
+ * @returns {Promise<Task>} - Promise with a Single Task in Repository
  */
 const get = async (boardId, taskId) => {
   const task = await DBTasks.getTask(boardId, taskId);
@@ -35,26 +35,26 @@ const get = async (boardId, taskId) => {
 };
 
 /**
- * ### Create Task
+ * ### Create Task in Repository
  * @param {Task} task - Task body
- * @returns {Promise<Task>} - Promise with Created Task or Empty object
+ * @returns {Promise<Task>} - Promise with Created Task in Repository
  */
 const create = (task) => DBTasks.createTask(task);
 
 /**
- * ### Update Task
+ * ### Update Task in Repository
  * @param {string} boardId - Board Id
  * @param {string} taskId - Task Id
  * @param {Task} newTask - new Task
- * @returns {Promise<Task>} - Promise with Updated Task
+ * @returns {Promise<Task>} - Promise with Updated Task in Repository
  */
 const update = (boardId, taskId, newTask) =>
   DBTasks.updateTask(boardId, taskId, newTask);
 
 /**
- * ### Remove Task
+ * ### Remove Task in Repository
  * @param {string} id - Task Id
- * @returns {Promise<Task>} - Promise with Deleted Task
+ * @returns {Promise<Task>} - Promise with Deleted Task in Repository
  */
 const remove = (id) => DBTasks.removeTask(id);
 

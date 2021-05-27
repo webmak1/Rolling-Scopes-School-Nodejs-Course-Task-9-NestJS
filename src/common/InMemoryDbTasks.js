@@ -20,16 +20,16 @@ const _ = require('lodash');
 const DBTasks = [];
 
 /**
- * ### Get All Tasks
- * @returns {Promise<Task[]>} - Promise with All Tasks
+ * ### Get All Tasks in DataBase file
+ * @returns {Promise<Task[]>} - Promise with All Tasks in DataBase file
  */
 const getAllTasks = async () => DBTasks.slice(0);
 
 /**
- * ### Get Task
+ * ### Get Task By Id in DataBase file
  * @param {string} boardId - board id
  * @param {string} taskId - task id
- * @returns {Promise<Task>} - Promise with a Single Task
+ * @returns {Promise<Task>} - Promise with a Single Task in DataBase file
  */
 const getTask = async (boardId, taskId) => {
   const allTasks = await getAllTasks();
@@ -46,9 +46,9 @@ const getTask = async (boardId, taskId) => {
 };
 
 /**
- * ### Create Task
+ * ### Create Task in DataBase file
  * @param {Task} task - Task body
- * @returns {Promise<Task>} - Promise with Created Task or Empty object
+ * @returns {Promise<Task>} - Promise with Created Task in DataBase file
  */
 const createTask = async (task) => {
   DBTasks.push(task);
@@ -56,9 +56,9 @@ const createTask = async (task) => {
 };
 
 /**
- * ### Remove Task
+ * ### Remove Task in DataBase file
  * @param {string} id - Task Id
- * @returns {Promise<Task>} - Promise with Deleted Task
+ * @returns {Promise<Task>} - Promise with Deleted Task in DataBase file
  */
 const removeTask = async (id) => {
   const deletedTask = await getTask(null, id);
@@ -67,9 +67,9 @@ const removeTask = async (id) => {
 };
 
 /**
- * ### Delete User From Tasks
+ * ### Delete User From Tasks in DataBase file
  * @param {string} userId
- * @returns {Promise<void>} - Promise with Nothing
+ * @returns {Promise<void>} - Promise with Void in DataBase file
  */
 const deleteUserFromTasks = async (userId) => {
   await _.map(DBTasks, async (task) => {
@@ -81,11 +81,11 @@ const deleteUserFromTasks = async (userId) => {
 };
 
 /**
- * ### Update Task
+ * ### Update Task in DataBase file
  * @param {string} boardId - Board Id
  * @param {string} taskId - Task Id
  * @param {Task} newTask - new Task
- * @returns {Promise<Task>} - Promise with Updated Task
+ * @returns {Promise<Task>} - Promise with Updated Task in DataBase file
  */
 const updateTask = async (boardId, taskId, newTask) => {
   await removeTask(taskId);
@@ -94,9 +94,9 @@ const updateTask = async (boardId, taskId, newTask) => {
 };
 
 /**
- * ### Remove Task by Board Id
+ * ### Remove Task by Board Id in DataBase file
  * @param {string} boardId
- * @returns {Promise<void>} - Promise with Nothing
+ * @returns {Promise<void>} - Promise with Void in DataBase file
  */
 const removeTaskByBoardId = async (boardId) => {
   await _.remove(DBTasks, (task) => task.boardId === boardId);

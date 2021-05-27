@@ -18,9 +18,9 @@ const DBUsers = require('../../common/InMemoryDbUsers');
 const getAll = async () => DBUsers.getAllUsers();
 
 /**
- * ### Get User
+ * ### Get User by Id in Repository
  * @param {string} id - user id
- * @returns {Promise<User>} - Promise with a Single User
+ * @returns {Promise<User>} - Promise with User by Id in Repository
  */
 const get = async (id) => {
   const user = await DBUsers.getUser(id);
@@ -31,24 +31,24 @@ const get = async (id) => {
 };
 
 /**
- * ### Create User
+ * ### Create User in Repository
  * @param {User} user - User
- * @returns {Promise<User>} - Promise with Created User or Empty object
+ * @returns {Promise<User>} - Promise with Created User in Repository
  */
 const create = (user) => DBUsers.createUser(user);
 
 /**
- * ### Update User
+ * ### Update User in Repository
  * @param {string} id - User Id
  * @param {object} newUser - new User
- * @returns {Promise<User>} - Promise with Updated User
+ * @returns {Promise<User>} - Promise with Updated User in Repository
  */
 const update = (id, newUser) => DBUsers.updateUser(id, newUser);
 
 /**
- * ### Remove User
+ * ### Remove User in Repository
  * @param {string} id - User Id
- * @returns {Promise<User>} - Promise with Deleted User
+ * @returns {Promise<User>} - Promise with Deleted User in Repository
  */
 const remove = (id) => DBUsers.removeUser(id);
 

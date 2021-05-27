@@ -34,9 +34,8 @@ class User {
 
   /**
    * ### Return User public data
-   * @property {Function} toResponse - Returns User public data
    * @param {User} user - User
-   * @returns { {id, name, login }} - {id, name, login}
+   * @returns { {id, name, login }} - Returns User public data
    */
   static toResponse(user) {
     const { id, name, login } = user;

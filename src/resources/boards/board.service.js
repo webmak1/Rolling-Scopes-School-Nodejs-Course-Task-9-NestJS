@@ -4,11 +4,9 @@ const express = require('express');
 const boardsRepo = require('./board.memory.repository');
 const Board = require('./board.model');
 
-console.log('**Express Version: ', express.version);
-
 /**
- * ### Get All Boards
- * @returns {Promise<Board[]>} - Promise with All Boards
+ * ### Get All Boards in Service
+ * @returns {Promise<Board[]>} - Promise with All Boards in Service
  */
 const getAll = async () => {
   const boards = await boardsRepo.getAll();
@@ -16,9 +14,9 @@ const getAll = async () => {
 };
 
 /**
- * ### Get Board
+ * ### Get Board By Id in Service
  * @param {express.Request} req
- * @returns {Promise<Board>} - Promise with a Single Board
+ * @returns {Promise<Board>} - Promise with a Single Board in Service
  */
 const get = async (req) => {
   const { id: boardId } = req.params;
@@ -27,9 +25,9 @@ const get = async (req) => {
 };
 
 /**
- * ### Create Board
+ * ### Create Board in Service
  * @param {express.Request} req
- * @returns {Promise<Board>} - Promise with Created Board or Empty object
+ * @returns {Promise<Board>} - Promise with Created Board in Service
  */
 const create = async (req) => {
   const board = await boardsRepo.create(
@@ -42,9 +40,9 @@ const create = async (req) => {
 };
 
 /**
- * ### Update Board
+ * ### Update Board in Service
  * @param {express.Request} req
- * @returns {Promise<Board>} - Promise with Updated Board
+ * @returns {Promise<Board>} - Promise with Updated Board in Service
  */
 const update = async (req) => {
   const board = await boardsRepo.update(req.params.id, req.body);
@@ -52,15 +50,20 @@ const update = async (req) => {
 };
 
 /**
- * ### Remove Board
+ * ### Remove Board in Service
  * @param {express.Request} req
- * @returns {Promise<Board>} - Promise with Deleted Board
+ * @returns {Promise<Board>} - Promise with Deleted Board in Service
  */
 const remove = async (req) => {
   const { id: boardId } = req.params;
   const board = await boardsRepo.remove(boardId);
   return Board.toResponse(board);
 };
+
+// Dummy for linter
+if (process.env.level) {
+  console.log('**Express Version: ', express.version);
+}
 
 module.exports = {
   getAll,
