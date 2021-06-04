@@ -1,32 +1,30 @@
 {
-  "root": true,
   "env": {
-    "es2020": true,
-    "jasmine": true,
-    "jest": true,
-    "node": true
-  },
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2021,
-    "ecmaFeatures": {
-      "impliedStrict": true
-    }
-  },
-  "settings": {
-    "noInlineConfig": true
+    "es6": true
   },
   "extends": [
     "eslint:recommended",
-    "plugin:node/recommended",
-    "airbnb-base",
-    "prettier"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "project": "tsconfig.eslint.json"
+  },
+  "plugins": ["@typescript-eslint"],
   "rules": {
-    "import/extensions": "off",
-    "linebreak-style": "off",
-    "node/no-unsupported-features/es-syntax": "off",
-    "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off"
-  }
+    "prefer-const": "error",
+    "@typscript-eslint/no-unused-vars": "off",
+    "@typscript-eslint/no-unused-params": "off",
+    "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off"
+  },
+  "overrides": [
+    {
+      "files": ["tests/**/*.ts"],
+      "env": { "jest": true, "node": true }
+    }
+  ]
 }
