@@ -16,20 +16,20 @@ export interface ITaskReqBody {
 }
 
 // GET ALL TASKS
-router.route('/').get((_req: Request, res: Response) => {
+router.route('/').get(async (_req: Request, res: Response) => {
   try {
-    return res.json(tasksService.getAll());
+    return res.json(await tasksService.getAll());
   } catch (err) {
     return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
   }
 });
 
 // GET TASK BY ID
-router.route('/:id').get((req: Request, res: Response) => {
+router.route('/:id').get(async (req: Request, res: Response) => {
   try {
     const { boardId, id: taskId } = req.params;
     if (boardId && taskId) {
-      return res.json(tasksService.get(boardId, taskId));
+      return res.json(await tasksService.get(boardId, taskId));
     }
     return res.status(StatusCodes.BAD_REQUEST).send('[App] invalid req params');
   } catch (err) {
@@ -38,7 +38,7 @@ router.route('/:id').get((req: Request, res: Response) => {
 });
 
 // CREATE TASK
-router.route('/').post((req: Request, res: Response) => {
+router.route('/').post(async (req: Request, res: Response) => {
   try {
     const { boardId } = req.params;
     const {
@@ -52,7 +52,7 @@ router.route('/').post((req: Request, res: Response) => {
       return res
         .status(StatusCodes.CREATED)
         .json(
-          tasksService.create(
+          await tasksService.create(
             boardId,
             title,
             order,
@@ -69,7 +69,9 @@ router.route('/').post((req: Request, res: Response) => {
 });
 
 // UPDATE TASK
-router.route('/:id').put((req: Request, res: Response) => {
+router.route('/:id').put(async (req: Request, res: Response) => {
+  console.log('ROUTE UPDATE TASK');
+
   try {
     const { boardId, id: taskId } = req.params;
     const {
@@ -80,9 +82,15 @@ router.route('/:id').put((req: Request, res: Response) => {
       columnId,
     } = req.body as ITaskReqBody;
 
+    console.log('ROUTE UPDATE TASK boardId');
+    console.log(boardId);
+
+    console.log('ROUTE UPDATE TASK taskId');
+    console.log(taskId);
+
     if (boardId && taskId) {
       return res.json(
-        tasksService.update(
+        await tasksService.update(
           boardId,
           taskId,
           title,
@@ -93,18 +101,20 @@ router.route('/:id').put((req: Request, res: Response) => {
         )
       );
     }
+
     return res.status(StatusCodes.BAD_REQUEST).send('[App] invalid req params');
   } catch (err) {
+    console.log(err);
     return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
   }
 });
 
 // DELETE TASK
-router.route('/:id').delete((req: Request, res: Response) => {
+router.route('/:id').delete(async (req: Request, res: Response) => {
   try {
     const { id: deletionId } = req.params;
     if (deletionId) {
-      return res.json(tasksService.remove(deletionId));
+      return res.json(await tasksService.remove(deletionId));
     }
     return res.status(StatusCodes.BAD_REQUEST).send('[App] invalid req params');
   } catch (err) {
