@@ -1,14 +1,13 @@
 // @ts-check
 
 import { v4 as uuidv4 } from 'uuid';
-
 interface ITaskGeneral {
   title: string;
-  order: string;
+  order: number;
   description: string;
   userId: string | null;
   boardId: string;
-  columnId: string;
+  columnId: string | null;
 }
 
 export interface ITask extends ITaskGeneral {
@@ -44,9 +43,5 @@ export class Task implements ITask {
     this.userId = userId;
     this.boardId = boardId;
     this.columnId = columnId;
-  }
-
-  static toResponse(task: ITask): ITask {
-    return task;
   }
 }

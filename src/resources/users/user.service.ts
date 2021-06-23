@@ -1,17 +1,24 @@
 // @ts-check
-
-import { usersRepo } from 'resources/users/user.memory.repository';
+import { tasksService } from 'resources/tasks/task.service';
 import { IUserOutput, User } from 'resources/users/user.model';
+import { getRepository } from 'typeorm';
+import { UserEntity } from './user.entity';
 
 // GET ALL
 const getAll = async (): Promise<IUserOutput[]> => {
-  const users = await usersRepo.getAll();
+  const userRepository = getRepository(UserEntity);
+  const users = await userRepository.find({});
+
   return users.map(User.toResponse);
 };
 
 // GET USER BY ID
 const get = async (userId: string): Promise<IUserOutput> => {
-  const user = await usersRepo.get(userId);
+  const userRepository = getRepository(UserEntity);
+  const user = await userRepository.findOne(userId);
+  if (!user) {
+    throw new Error('[App] User not found!');
+  }
   return User.toResponse(user);
 };
 
@@ -21,11 +28,20 @@ const create = async (
   password: string,
   name: string
 ): Promise<IUserOutput> => {
-  const createdUser = await usersRepo.create(login, password, name);
-  if (createdUser) {
-    return User.toResponse(createdUser);
+  const userRepository = getRepository(UserEntity);
+
+  const user = new UserEntity();
+  user.name = name;
+  user.login = login;
+  user.password = password;
+
+  const createdUser = await userRepository.save(user);
+  if (!createdUser) {
+    throw new Error("[App] Can't create User!");
   }
-  throw new Error('[App] Null Pointer Exception!');
+
+  const createdUserResult = await get(createdUser.id.toString());
+  return createdUserResult;
 };
 
 // UPDATE USER
@@ -35,20 +51,36 @@ const update = async (
   password: string,
   name: string
 ): Promise<IUserOutput> => {
-  const updatedUser = await usersRepo.update(userId, login, password, name);
-  if (updatedUser) {
-    return User.toResponse(updatedUser);
+  const userRepository = getRepository(UserEntity);
+  const updatedUser = await userRepository.update(userId, {
+    login,
+    password,
+    name,
+  });
+
+  if (!updatedUser.affected) {
+    throw new Error("[App] Can't Update User!");
   }
-  throw new Error('[App] Null Pointer Exception!');
+
+  const updatedUserResult = await get(userId);
+  return updatedUserResult;
 };
 
 // DELETE USER
 const remove = async (userId: string): Promise<IUserOutput> => {
-  const user = await usersRepo.remove(userId);
-  if (user) {
-    return User.toResponse(user);
+  const userDeleteResult = await get(userId);
+
+  const userRepository = getRepository(UserEntity);
+  const res = await userRepository.delete(userId);
+
+  if (!res.affected) {
+    throw new Error('[App] Cant Delete User!');
   }
-  throw new Error('[App] Null Pointer Exception!');
+
+  // DELETE USER FROM TASKS
+  await tasksService.deleteUserFromTasks(userId);
+
+  return userDeleteResult;
 };
 
 export const usersService = {

@@ -1,12 +1,13 @@
 import { Application, NextFunction, Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
 import * as path from 'path';
+import 'reflect-metadata';
 import { router as boardRouter } from 'resources/boards/board.router';
 import { router as taskRouter } from 'resources/tasks/task.router';
 import { router as userRouter } from 'resources/users/user.router';
 import * as swaggerUI from 'swagger-ui-express';
 import * as YAML from 'yamljs';
-import { writeAccessLog, writeErrorLog } from './common/loggingConfig';
+// import { writeAccessLog, writeErrorLog } from './common/loggingConfig';
 import express = require('express');
 
 const app: Application = express();
@@ -16,8 +17,8 @@ app.use(express.json());
 
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
-app.use((req: Request, _res: Response, next: NextFunction) => {
-  writeAccessLog(req);
+app.use((_req: Request, _res: Response, next: NextFunction) => {
+  // writeAccessLog(req);
   next();
 });
 
@@ -40,8 +41,8 @@ app.all('*', (req: Request, _res: Response, next: NextFunction) => {
   next(err);
 });
 
-app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
-  writeErrorLog(err, req);
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+  // writeErrorLog(err, req);
   return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({
     error: err.name,
     message: err.message,

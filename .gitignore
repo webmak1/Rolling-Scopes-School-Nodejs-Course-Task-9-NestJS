@@ -1,4 +1,6 @@
+PGDATA/
 node_modules
 build/
 dist/
 tsconfig.tsbuildinfo
+yarn.lock

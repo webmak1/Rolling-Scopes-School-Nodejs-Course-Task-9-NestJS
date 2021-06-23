@@ -1,27 +1,43 @@
 // @ts-check
 
-import { boardsRepo } from 'resources/boards/board.memory.repository';
-import { Board, IBoard } from 'resources/boards/board.model';
+import { IBoard, IColumns } from 'resources/boards/board.model';
+import { tasksService } from 'resources/tasks/task.service';
+import { getRepository } from 'typeorm';
+import { BoardEntity } from './board.entity';
 
 // GET ALL BOARDS
 const getAll = async (): Promise<IBoard[]> => {
-  const boards = await boardsRepo.getAll();
-  return boards.map(Board.toResponse);
+  const boardRepository = getRepository(BoardEntity);
+  const boards = await boardRepository.find({});
+
+  return boards;
 };
 
 // GET BOARD
 const get = async (boardId: string): Promise<IBoard> => {
-  const board = await boardsRepo.get(boardId);
-  return Board.toResponse(board);
+  const boardRepository = getRepository(BoardEntity);
+  const board = await boardRepository.findOne(boardId);
+  if (!board) {
+    throw new Error('[App] Board not found!');
+  }
+  return board;
 };
 
 // CREATE BOARD
 const create = async (title: string, columns: string): Promise<IBoard> => {
-  const board = await boardsRepo.create(title, columns);
-  if (board) {
-    return Board.toResponse(board);
+  const boardRepository = getRepository(BoardEntity);
+
+  const columnsRes = columnsToArrayofObjects(columns);
+
+  const board = new BoardEntity();
+  board.title = title;
+  board.columns = columnsRes;
+
+  const createdBoard = await boardRepository.save(board);
+  if (!createdBoard) {
+    throw new Error('[App] Cant create Board!');
   }
-  throw new Error('[App] Null Pointer Exception!');
+  return createdBoard;
 };
 
 // UPDATE BOARD
@@ -30,20 +46,50 @@ const update = async (
   title: string,
   columns: string
 ): Promise<IBoard> => {
-  const board = await boardsRepo.update(boardId, title, columns);
-  if (board) {
-    return Board.toResponse(board);
+  const boardRepository = getRepository(BoardEntity);
+  const columnsRes = columnsToArrayofObjects(columns);
+
+  const updatedBoard = await boardRepository.update(boardId, {
+    title,
+    columns: columnsRes,
+  });
+
+  if (!updatedBoard.affected) {
+    throw new Error("[App] Can't Update Board!");
   }
-  throw new Error('[App] Null Pointer Exception!');
+
+  const updatedBoardResult = await get(boardId);
+  return updatedBoardResult;
 };
 
 // DELETE BOARD
 const remove = async (boardId: string): Promise<IBoard> => {
-  const board = await boardsRepo.remove(boardId);
-  if (board) {
-    return Board.toResponse(board);
+  const boardDeleteResult = await get(boardId);
+  const boardRepository = getRepository(BoardEntity);
+
+  const res = await boardRepository.delete(boardId);
+
+  if (!res.affected) {
+    throw new Error("[App] Can't Delete Board!");
   }
-  throw new Error('[App] Null Pointer Exception!');
+
+  // DELETE BOARDS TASKS
+  await tasksService.deleteBoardsTasks(boardId);
+  return boardDeleteResult;
+};
+
+const columnsToArrayofObjects = (columns: string): IColumns[] => {
+  const columnsParsed: IColumns[] = [];
+  try {
+    const columnsConverted = (columns as unknown) as IColumns[];
+    columnsConverted.map((column: IColumns) => {
+      columnsParsed.push(column);
+    });
+  } catch (err) {
+    console.log("[App] Can't convert columns to Array of Objects");
+  }
+
+  return columnsParsed;
 };
 
 export const boardsService = {

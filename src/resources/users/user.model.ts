@@ -3,7 +3,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export interface IUserOutput {
-  id: string;
+  id: number;
   name: string;
   login: string;
 }
@@ -14,11 +14,11 @@ interface IUserGeneral {
   password: string;
 }
 export interface IUser extends IUserGeneral {
-  id: string;
+  id: number;
 }
 
 export interface IUserInput extends IUserGeneral {
-  id: string | undefined;
+  id: number | undefined;
 }
 
 export class User implements IUser {
@@ -27,7 +27,7 @@ export class User implements IUser {
   public login;
   public password;
 
-  constructor({ id = uuidv4(), name, login, password }: IUserInput) {
+  constructor({ id = +uuidv4(), name, login, password }: IUserInput) {
     this.id = id;
     this.name = name;
     this.login = login;

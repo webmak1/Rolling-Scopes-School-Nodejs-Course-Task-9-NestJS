@@ -48,6 +48,7 @@ router.route('/').post(async (req: Request, res: Response) => {
       userId,
       columnId,
     } = req.body as ITaskReqBody;
+
     if (boardId) {
       return res
         .status(StatusCodes.CREATED)
@@ -70,8 +71,6 @@ router.route('/').post(async (req: Request, res: Response) => {
 
 // UPDATE TASK
 router.route('/:id').put(async (req: Request, res: Response) => {
-  console.log('ROUTE UPDATE TASK');
-
   try {
     const { boardId, id: taskId } = req.params;
     const {
@@ -81,13 +80,6 @@ router.route('/:id').put(async (req: Request, res: Response) => {
       userId,
       columnId,
     } = req.body as ITaskReqBody;
-
-    console.log('ROUTE UPDATE TASK boardId');
-    console.log(boardId);
-
-    console.log('ROUTE UPDATE TASK taskId');
-    console.log(taskId);
-
     if (boardId && taskId) {
       return res.json(
         await tasksService.update(
@@ -112,9 +104,9 @@ router.route('/:id').put(async (req: Request, res: Response) => {
 // DELETE TASK
 router.route('/:id').delete(async (req: Request, res: Response) => {
   try {
-    const { id: deletionId } = req.params;
-    if (deletionId) {
-      return res.json(await tasksService.remove(deletionId));
+    const { id: taskId } = req.params;
+    if (taskId) {
+      return res.json(await tasksService.remove(taskId));
     }
     return res.status(StatusCodes.BAD_REQUEST).send('[App] invalid req params');
   } catch (err) {
