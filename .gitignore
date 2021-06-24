@@ -4,3 +4,4 @@ build/
 dist/
 tsconfig.tsbuildinfo
 yarn.lock
+package-lock.json
