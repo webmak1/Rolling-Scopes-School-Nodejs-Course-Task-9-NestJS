@@ -1,30 +1,32 @@
-const jwt = require('jsonwebtoken');
-const asyncHandler = require('./async');
-const { User } = require('../resources/users/user.model');
-const { UNAUTHORIZED, getStatusText } = require('http-status-codes');
+import { getReasonPhrase, StatusCodes } from 'http-status-codes';
+import * as jwt from 'jsonwebtoken';
+import { usersService } from 'resources/users/user.service';
 
 // Protect routes
-exports.protect = asyncHandler(async (req, res, next) => {
+export const protect = async (req, res, next) => {
   let token;
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
+  if (req.headers.authorization?.startsWith('Bearer')) {
     // Set token from Bearer token in header
     token = req.headers.authorization.split(' ')[1];
   }
 
   // Make sure token exists
   if (!token) {
-    return res.status(UNAUTHORIZED).send(getStatusText(UNAUTHORIZED));
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .send(getReasonPhrase(StatusCodes.UNAUTHORIZED));
   }
 
   try {
+    // @ts-ignore
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-    req.user = await User.findById(decoded.id);
+    const user = await usersService.get(decoded.id);
+    req.user = user;
     // eslint-disable-next-line
     next();
   } catch (err) {
-    return res.status(UNAUTHORIZED).send(getStatusText(UNAUTHORIZED));
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .send(getReasonPhrase(StatusCodes.UNAUTHORIZED));
   }
-});
+};

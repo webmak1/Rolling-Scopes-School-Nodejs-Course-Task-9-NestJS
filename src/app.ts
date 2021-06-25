@@ -1,5 +1,6 @@
 import { Application, NextFunction, Request, Response } from 'express';
 import { getReasonPhrase, StatusCodes } from 'http-status-codes';
+import { protect } from 'middleware/auth';
 import * as path from 'path';
 import 'reflect-metadata';
 import { router as boardRouter } from 'resources/boards/board.router';
@@ -10,7 +11,6 @@ import * as swaggerUI from 'swagger-ui-express';
 import * as YAML from 'yamljs';
 // import { writeAccessLog, writeErrorLog } from './common/loggingConfig';
 import express = require('express');
-const { protect } = require('./middleware/auth');
 
 const app: Application = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));

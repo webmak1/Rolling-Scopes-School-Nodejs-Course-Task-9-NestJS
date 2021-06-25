@@ -76,58 +76,124 @@ $ docker-compose rm
 
 <br/>
 
-### Комментарии по выполненной работе
-
-:heavy_check_mark: В качестве источника данных для users используется PostgreSQL база данных, работа с которой происходит при помощи typeorm +40 баллов.
-
-:heavy_check_mark: В качестве источника данных для tasks используется PostgreSQL база данных, работа с которой происходит при помощи typeorm +40 баллов.
-
-:heavy_check_mark: В качестве источника данных для boards используется PostgreSQL база данных, работа с которой происходит при помощи typeorm +40 баллов.
-
-:heavy_check_mark: Для создания таблиц с сущностями используются миграции. +50 баллов
-
-:heavy_check_mark: Переменные, используемые для подключения к базе данных, хранятся в .env +10 баллов.
+## Комментарии к задачам:
 
 <br/>
 
-### Штрафы:
+### Создать пользователя admin/admin
 
-:heavy_check_mark: Наличие изменений в тестах либо в workflow минус 100 баллов
+```
+$ curl \
+-d '{"name": "Admin",
+        "login": "admin",
+        "password": "admin"}' \
+-H "Content-Type: application/json" \
+-X POST localhost:4000/users \
+| python -m json.tool
+```
 
-нет
+<br/>
 
-:heavy_check_mark: Внесение изменений в репозиторий после дедлайна не считая
+### Логин пользователем admin/admin
 
-нет
+```
+$ curl \
+-d '{"login": "admin",
+        "password": "admin"}' \
+-H "Content-Type: application/json" \
+-X POST localhost:4000/login \
+| python -m json.tool
+```
 
-:heavy_check_mark: коммиты, вносящие изменения только в Readme.md минус 30% от максимального балла за задание (для этого задания 54 баллов)
+<br/>
 
-нет
+**Возвращает токен:**
 
-:heavy_check_mark: За каждую ошибку линтера при запуске npm run lint на основе локального конфига -20 баллов (именно errors, не warnings)
+```
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTljMGJkYzIzMzBhZmIxNWY5ZDA0NCIsImlhdCI6MTYwMzkxNDc0OX0.JboHbReUuTiEcHGz0S5_XxsciQmPbTTP6KbjGm1OKsw"
+}
+```
 
-нет
+<br/>
 
-:heavy_check_mark: За каждую ошибку компилятора -20 баллов
+### Пробуем получить всех пользователей без token
 
-нет
+<br/>
 
-За каждый непроходящий тест -20 баллов
+    $ curl -s -o /dev/null -w "%{http_code}" \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users
 
-нет
+<br/>
 
-:heavy_check_mark: Имеются явно указанные типы any, unknown -20 баллов за каждое использование
+**Результат - Unauthorized:**  
+401
 
-ХЗ. компилятор сам говорит, что ему нужно, чтобы для приведения типа string к массиву объектов, сначала нужно привести к типу unknown, а уже потом к нужному типу.
+<br/>
 
-Так, что unknown используется для переопределения и сразу явно указывается новый тип.
+### Пробуем получить всех пользователей с неправильным token
 
-Считаю, что нет.
+    $ curl -s -o /dev/null -w "%{http_code}" \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users \
+    -H "authorization: Bearer ABCDEFGH"
 
-:heavy_check_mark: За отсутствие отдельной ветки для разработки -20 баллов
+<br/>
 
-:heavy_check_mark: За отсутствие Pull Request -20 баллов
+**Результат - Unauthorized:**  
+401
 
-:heavy_check_mark: За неполную информацию в описании Pull Request (отсутствует либо некорректен один из 3 обязательных пунктов) -10 баллов
+<br/>
 
-:heavy_check_mark: Меньше 3 коммитов в ветке разработки, не считая коммиты, вносящие изменения только в Readme.md — -20 баллов
+### Пробуем получить всех пользователей с валидным token
+
+```
+$ export TOKEN=
+```
+
+<br/>
+
+```
+$ curl \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users \
+    -H "authorization: Bearer ${TOKEN}" \
+    | python -m json.tool
+```
+
+<br/>
+
+**Результат:**
+
+```
+    {
+        "id": "5f99bfacc2330afb15f9d043",
+        "login": "admin",
+        "name": "Admin"
+    },
+    {
+        "id": "5f99c0bdc2330afb15f9d044",
+        "login": "user",
+        "name": "User"
+    },
+
+```
+
+<br/>
+
+### Пробуем подключиться пользователем отсутствующем в базе данных fake/fake
+
+```
+$ curl -s -o /dev/null -w "%{http_code}"  \
+    -d '{"login": "fake",
+            "password": "fake"}' \
+    -H "Content-Type: application/json" \
+    -X POST localhost:4000/login
+```
+
+<br/>
+
+**Возвращает Forbidden:**  
+403
+
