@@ -80,20 +80,6 @@ $ docker-compose rm
 
 <br/>
 
-### Создать пользователя admin/admin
-
-```
-$ curl \
--d '{"name": "Admin",
-        "login": "admin",
-        "password": "admin"}' \
--H "Content-Type: application/json" \
--X POST localhost:4000/users \
-| python -m json.tool
-```
-
-<br/>
-
 ### Логин пользователем admin/admin
 
 ```
@@ -115,15 +101,35 @@ $ curl \
 }
 ```
 
+```
+$ export TOKEN=
+```
+
+<br/>
+
+### Создать пользователя user/user
+
+```
+$ curl \
+    -d '{"name": "user",
+            "login": "user",
+            "password": "user"}' \
+    -H "Content-Type: application/json" \
+    -X POST localhost:4000/users \
+    | python -m json.tool
+```
+
 <br/>
 
 ### Пробуем получить всех пользователей без token
 
 <br/>
 
-    $ curl -s -o /dev/null -w "%{http_code}" \
+```
+$ curl -s -o /dev/null -w "%{http_code}" \
     -H "Content-Type: application/json" \
     -X GET localhost:4000/users
+```
 
 <br/>
 
@@ -134,10 +140,14 @@ $ curl \
 
 ### Пробуем получить всех пользователей с неправильным token
 
-    $ curl -s -o /dev/null -w "%{http_code}" \
+<br/>
+
+```
+$ curl -s -o /dev/null -w "%{http_code}" \
     -H "Content-Type: application/json" \
     -X GET localhost:4000/users \
     -H "authorization: Bearer ABCDEFGH"
+```
 
 <br/>
 
@@ -147,10 +157,6 @@ $ curl \
 <br/>
 
 ### Пробуем получить всех пользователей с валидным token
-
-```
-$ export TOKEN=
-```
 
 <br/>
 
@@ -196,4 +202,3 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 
 **Возвращает Forbidden:**  
 403
-

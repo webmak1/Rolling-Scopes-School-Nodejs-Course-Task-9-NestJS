@@ -10,16 +10,10 @@ router.route('/').post(async (req: Request, res: Response) => {
     const { login, password } = req.body;
     const token = await loginService.login(login, password);
 
-    // @ts-ignore
     if (token.errorStatus) {
-      // @ts-ignore
-      return (
-        res
-          // @ts-ignore
-          .status(token.errorStatus)
-          // @ts-ignore
-          .send(getReasonPhrase(token.errorStatus))
-      );
+      return res
+        .status(token.errorStatus)
+        .send(getReasonPhrase(token.errorStatus));
     }
 
     return res.json({ token });
