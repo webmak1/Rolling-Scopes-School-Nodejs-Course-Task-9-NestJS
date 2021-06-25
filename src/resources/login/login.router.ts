@@ -1,5 +1,5 @@
 import { Application, Request, Response } from 'express';
-import { getReasonPhrase, StatusCodes } from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
 import { loginService } from 'resources/login/login.service';
 import express = require('express');
 
@@ -10,10 +10,14 @@ router.route('/').post(async (req: Request, res: Response) => {
     const { login, password } = req.body;
     const token = await loginService.login(login, password);
 
-    if (token.errorStatus) {
-      return res
-        .status(token.errorStatus)
-        .send(getReasonPhrase(token.errorStatus));
+    // if (token.errorStatus) {
+    //   return res
+    //     .status(token.errorStatus)
+    //     .send(getReasonPhrase(token.errorStatus));
+    // }
+
+    if (!token) {
+      throw new Error('[App] User not found!');
     }
 
     return res.json({ token });

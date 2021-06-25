@@ -1,15 +1,16 @@
 import { compare } from 'bcryptjs';
 import { config } from 'common/config';
-import { StatusCodes } from 'http-status-codes';
 import { sign } from 'jsonwebtoken';
 import { UserEntity } from 'resources/users/user.entity';
 import { getRepository } from 'typeorm';
 
 const login = async (login: string, password: string): Promise<string> => {
   if (!login || !password) {
-    return {
-      errorStatus: StatusCodes.UNAUTHORIZED,
-    };
+    // return {
+    //   errorStatus: StatusCodes.UNAUTHORIZED,
+    // };
+
+    throw new Error('[App] No Login or Password!');
   }
 
   const userRepository = getRepository(UserEntity);
@@ -22,24 +23,27 @@ const login = async (login: string, password: string): Promise<string> => {
   );
 
   if (!user) {
-    return {
-      errorStatus: StatusCodes.FORBIDDEN,
-    };
+    // return {
+    //   errorStatus: StatusCodes.FORBIDDEN,
+    // };
+
+    throw new Error('[App] FORBIDDEN!');
   }
 
   const isPasswordCorrect = await compare(password, user.password);
 
   if (!isPasswordCorrect) {
-    return {
-      errorStatus: StatusCodes.UNAUTHORIZED,
-    };
+    // return {
+    //   errorStatus: StatusCodes.UNAUTHORIZED,
+    // };
+    throw new Error('[App] UNAUTHORIZED!');
   }
 
-  const token = await generateJwt(user);
+  const token: string = await generateJwt(user);
   return token;
 };
 
-const generateJwt = (user) => {
+const generateJwt = (user: UserEntity) => {
   return sign(
     {
       login: user.login,

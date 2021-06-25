@@ -17,17 +17,20 @@ export const protect = async (
   }
 
   // Make sure token exists
+  // if (!token) {
+  //   return res
+  //     .status(StatusCodes.UNAUTHORIZED)
+  //     .send(getReasonPhrase(StatusCodes.UNAUTHORIZED));
+  // }
+
   if (!token) {
-    return res
-      .status(StatusCodes.UNAUTHORIZED)
-      .send(getReasonPhrase(StatusCodes.UNAUTHORIZED));
+    throw new Error('[App] User not found!');
   }
 
   try {
     const decoded = jwt.verify(token, config.JWT_SECRET_KEY);
     const user = await usersService.get(decoded.id);
     req.user = user;
-    // eslint-disable-next-line
     next();
   } catch (err) {
     return res
