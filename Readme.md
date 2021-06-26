@@ -97,12 +97,14 @@ $ curl \
 
 ```
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwicGFzc3dvcmQiOiIkMmEkMTAkdTZBQTd2cmxUZWxLcjJ5bmY4THh1T2JQdTJmVDRnNGloVlU4Qkd1RTNXSzJTSVlhRS9WbC4iLCJpYXQiOjE2MjQ2OTczOTN9.D6VUelPXJF320xcjRPa7ETZzGYO6ZNNbGdVL2iwnnqY"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxOTgzNTU0LWY0ZjAtNGM1ZS1iZmE1LTQzNWUzNDY3MDVmMSIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwMDg5M30.BMNoRv1V_voeK5I4hyzuqCubSo89TpJ-OTLF8s9J0qE"
 }
 ```
 
+<br/>
+
 ```
-$ export TOKEN=
+$ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxOTgzNTU0LWY0ZjAtNGM1ZS1iZmE1LTQzNWUzNDY3MDVmMSIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwMDg5M30.BMNoRv1V_voeK5I4hyzuqCubSo89TpJ-OTLF8s9J0qE
 ```
 
 <br/>
@@ -115,8 +117,21 @@ $ curl \
             "login": "user",
             "password": "user"}' \
     -H "Content-Type: application/json" \
+    -H "authorization: Bearer ${TOKEN}" \
     -X POST localhost:4000/users \
     | python -m json.tool
+```
+
+<br/>
+
+**возвращает:**
+
+```
+{
+    "id": "5d37b0b1-d5f7-4272-9349-e384c1cffec8",
+    "login": "user",
+    "name": "user"
+}
 ```
 
 <br/>
@@ -173,17 +188,18 @@ $ curl \
 **Результат:**
 
 ```
+[
     {
-        "id": "5f99bfacc2330afb15f9d043",
+        "id": "71983554-f4f0-4c5e-bfa5-435e346705f1",
         "login": "admin",
-        "name": "Admin"
+        "name": "admin"
     },
     {
-        "id": "5f99c0bdc2330afb15f9d044",
+        "id": "5d37b0b1-d5f7-4272-9349-e384c1cffec8",
         "login": "user",
-        "name": "User"
-    },
-
+        "name": "user"
+    }
+]
 ```
 
 <br/>

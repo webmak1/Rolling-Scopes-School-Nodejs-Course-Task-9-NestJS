@@ -16,13 +16,18 @@ router.route('/').post(async (req: Request, res: Response) => {
     //     .send(getReasonPhrase(token.errorStatus));
     // }
 
+    console.log('token');
+    console.log(token);
+
     if (!token) {
       throw new Error('[App] User not found!');
     }
 
     return res.json({ token });
   } catch (err) {
-    return res.status(StatusCodes.NOT_FOUND).send(err.message);
+    return res
+      .status(StatusCodes.FORBIDDEN)
+      .send('[App] Some Error with a token!');
   }
 });
 
