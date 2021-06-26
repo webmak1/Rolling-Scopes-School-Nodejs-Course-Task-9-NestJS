@@ -4,18 +4,18 @@
 
 Разрабатывается и тестируется в последней Ubuntu LTS.
 
-Если вы работаете windows и есть gmail аккаунт, работу можно протестировать в бесплатных облаках google.  
+Если вы работаете в windows и есть gmail аккаунт, работу можно протестировать в бесплатных облаках google.  
 https://shell.cloud.google.com/
 
 <br/>
 
 ### Запуск
 
-Нужно установить docker и docker-compose.
+Нужно установить <a href="//sysadm.ru/devops/containers/docker/setup/ubuntu/">docker и docker-compose</a>.
 
-Скопировать проект.
+Клонировать проект. Ветка dev уже установлена по умолчанию.
 
-В каталоге Rolling-Scopes-School-Nodejs-Course-Task-7-PostgreSQL-Typeorm выполнить.
+В каталоге Task-8-Authentification-JWT выполнить.
 
 <br/>
 
@@ -25,9 +25,19 @@ $ docker-compose up --build
 
 <br/>
 
-Чтобы проверить работу, можно подключиться
+**Ожидаемый результат**
 
-http://localhost:4000/doc/
+<br/>
+
+![Application](/img/pic-01.gif?raw=true)
+
+<br/>
+
+Чтобы проверить работу, можно запустить тесты
+
+```
+$ npm run test:auth
+```
 
 <br/>
 
@@ -52,31 +62,30 @@ $ docker-compose rm
 
 <br/>
 
-### Возможные проверки
+**Можно удалить и ренее созданные объекты docker **
 
-Запуск приложения и тестов.
-
-<br/>
-
-![Application](/img/pic-01.gif?raw=true)
-
-<br/>
-
-**Ошибки линтера отсутствуют:**
-
-![Application](/img/pic-02.png?raw=true)
+```
+$ docker system prune -a
+$ docker container prune
+$ docker image prune -a
+$ docker volume prune
+$ docker network prune
+```
 
 <br/>
 
 ### Возможно, полезные команды
 
-    $ yarn db:drop
-    $ yarn db:create CreateMigrations
-    $ yarn db:migrate
+```
+$ yarn db:drop
+$ yarn db:create CreateMigrations
+$ yarn db:migrate
+$ yarn db:seed
+```
 
 <br/>
 
-## Комментарии к задачам:
+### Возможные проверки
 
 <br/>
 
@@ -97,14 +106,14 @@ $ curl \
 
 ```
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxOTgzNTU0LWY0ZjAtNGM1ZS1iZmE1LTQzNWUzNDY3MDVmMSIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwMDg5M30.BMNoRv1V_voeK5I4hyzuqCubSo89TpJ-OTLF8s9J0qE"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MWI0Yjg0LWFjNDItNDQ1NS1iZjZkLWQ5OWMzNmMzOWQ4MiIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwNjIwNn0.UDq8dBHsEPHIVgOrQ093egunpV_QlUhPhrYt1i4ii6s"
 }
 ```
 
 <br/>
 
 ```
-$ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcxOTgzNTU0LWY0ZjAtNGM1ZS1iZmE1LTQzNWUzNDY3MDVmMSIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwMDg5M30.BMNoRv1V_voeK5I4hyzuqCubSo89TpJ-OTLF8s9J0qE
+$ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MWI0Yjg0LWFjNDItNDQ1NS1iZjZkLWQ5OWMzNmMzOWQ4MiIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwNjIwNn0.UDq8dBHsEPHIVgOrQ093egunpV_QlUhPhrYt1i4ii6s
 ```
 
 <br/>
@@ -128,7 +137,7 @@ $ curl \
 
 ```
 {
-    "id": "5d37b0b1-d5f7-4272-9349-e384c1cffec8",
+    "id": "705ca36e-b7db-4aca-9e1d-199422f83f59",
     "login": "user",
     "name": "user"
 }
@@ -190,17 +199,34 @@ $ curl \
 ```
 [
     {
-        "id": "71983554-f4f0-4c5e-bfa5-435e346705f1",
+        "id": "751b4b84-ac42-4455-bf6d-d99c36c39d82",
         "login": "admin",
         "name": "admin"
     },
     {
-        "id": "5d37b0b1-d5f7-4272-9349-e384c1cffec8",
+        "id": "705ca36e-b7db-4aca-9e1d-199422f83f59",
         "login": "user",
         "name": "user"
     }
 ]
 ```
+
+<br/>
+
+**Повторяем, чтобу проверить код**
+
+```
+$ curl -s -o /dev/null -w "%{http_code}" \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users \
+    -H "authorization: Bearer ${TOKEN}" \
+    | python -m json.tool
+```
+
+<br/>
+
+**Результат - OK:**  
+200
 
 <br/>
 
@@ -218,3 +244,42 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 
 **Возвращает Forbidden:**  
 403
+
+<br/>
+
+## Комментарии к задачам:
+
+:heavy_check_mark: Пароли пользователей сохраняются в базу в виде хэша с использованием bcrypt. +20 баллов.
+
+:heavy_check_mark: Добавлен роут /login, связанная с ним логика разделена между контроллером (middleware) и соответствующим сервисом. В случае отсутствия юзера в БД, возвращается 403 (Forbidden) HTTP статус. +20 баллов.
+
+:heavy_check_mark: JWT токен содержит userId и login, секретный ключ хранится в .env +20 баллов.
+
+:heavy_check_mark: Доступ ко всем роутам, за исключением /login, /doc и /, требует аутентификации +20 баллов.
+
+:heavy_check_mark: Проверка на наличие токена в реквесте реализована в отдельной middleware на уровне приложения.
+В случае если токен не валидный, или отсутствует, возвращается 401 (Unauthorized) HTTP статус. +20 баллов.
+
+<br/>
+
+### Штрафы:
+
+:heavy_check_mark: Наличие изменений в тестах либо в workflow минус 100 баллов
+
+:heavy_check_mark: Внесение изменений в репозиторий после дедлайна не считая коммиты, вносящие изменения только в Readme.md минус 30% от максимального балла за задание (для этого задания 30 баллов)
+
+:heavy_check_mark: За каждую ошибку линтера при запуске npm run lint на основе локального конфига -20 баллов (именно errors, не warnings)
+
+:heavy_check_mark: За каждую ошибку компилятора -20 баллов
+
+:heavy_check_mark: Для успешного прохождения тестов обязательно наличие в БД юзера с логином - admin, паролем - admin. Все тесты npm run test:auth должны проходить успешно, каждый не пройденный тест минус 20 баллов.
+
+:heavy_check_mark: Имеются явно указанные типы any, unknown -20 баллов за каждое использование
+
+:heavy_check_mark: За отсутствие отдельной ветки для разработки -20 баллов
+
+:heavy_check_mark: За отсутствие Pull Request -20 баллов
+
+:heavy_check_mark: За неполную информацию в описании Pull Request (отсутствует либо некорректен один из 3 обязательных пунктов) -10 баллов
+
+:heavy_check_mark: Меньше 3 коммитов в ветке разработки, не считая коммиты, вносящие изменения только в Readme.md — -20 баллов

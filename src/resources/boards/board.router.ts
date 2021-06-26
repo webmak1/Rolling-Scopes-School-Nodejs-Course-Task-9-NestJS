@@ -2,6 +2,7 @@
 
 import { Application, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { IColumn } from 'resources/boards/board.model';
 import { boardsService } from 'resources/boards/board.service';
 
 import express = require('express');
@@ -10,7 +11,7 @@ const router: Application = express();
 
 export interface IBoardReqBody {
   title: string;
-  columns: string;
+  columns: IColumn[];
 }
 
 // GET ALL BOARDS

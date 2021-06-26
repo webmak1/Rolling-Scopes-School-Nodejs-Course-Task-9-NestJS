@@ -1,6 +1,6 @@
 // @ts-check
 
-import { IBoard, IColumns } from 'resources/boards/board.model';
+import { IBoard, IColumn } from 'resources/boards/board.model';
 import { tasksService } from 'resources/tasks/task.service';
 import { getRepository } from 'typeorm';
 import { BoardEntity } from './board.entity';
@@ -24,7 +24,7 @@ const get = async (boardId: string): Promise<IBoard> => {
 };
 
 // CREATE BOARD
-const create = async (title: string, columns: string): Promise<IBoard> => {
+const create = async (title: string, columns: IColumn[]): Promise<IBoard> => {
   const boardRepository = getRepository(BoardEntity);
 
   const columnsRes = columnsToArrayofObjects(columns);
@@ -44,7 +44,7 @@ const create = async (title: string, columns: string): Promise<IBoard> => {
 const update = async (
   boardId: string,
   title: string,
-  columns: string
+  columns: IColumn[]
 ): Promise<IBoard> => {
   const boardRepository = getRepository(BoardEntity);
   const columnsRes = columnsToArrayofObjects(columns);
@@ -78,11 +78,12 @@ const remove = async (boardId: string): Promise<IBoard> => {
   return boardDeleteResult;
 };
 
-const columnsToArrayofObjects = (columns: string): IColumns[] => {
-  const columnsParsed: IColumns[] = [];
+const columnsToArrayofObjects = (columns: IColumn[]): IColumn[] => {
+  const columnsParsed: IColumn[] = [];
+
   try {
-    const columnsConverted = (columns as unknown) as IColumns[];
-    columnsConverted.map((column: IColumns) => {
+    const columnsConverted = (columns as unknown) as IColumn[];
+    columnsConverted.map((column: IColumn) => {
       columnsParsed.push(column);
     });
   } catch (err) {

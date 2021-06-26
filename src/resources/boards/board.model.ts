@@ -2,14 +2,14 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
-export interface IColumns {
+export interface IColumn {
   title: string;
   order: number;
 }
 
 interface IBoardGeneral {
   title: string;
-  columns: IColumns[];
+  columns: IColumn[];
 }
 export interface IBoard extends IBoardGeneral {
   id: number;

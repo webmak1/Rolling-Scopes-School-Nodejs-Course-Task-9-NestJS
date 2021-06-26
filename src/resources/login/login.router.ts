@@ -10,24 +10,13 @@ router.route('/').post(async (req: Request, res: Response) => {
     const { login, password } = req.body;
     const token = await loginService.login(login, password);
 
-    // if (token.errorStatus) {
-    //   return res
-    //     .status(token.errorStatus)
-    //     .send(getReasonPhrase(token.errorStatus));
-    // }
-
-    console.log('token');
-    console.log(token);
-
     if (!token) {
-      throw new Error('[App] User not found!');
+      throw new Error('[App] Forbidden!');
     }
 
     return res.json({ token });
   } catch (err) {
-    return res
-      .status(StatusCodes.FORBIDDEN)
-      .send('[App] Some Error with a token!');
+    return res.status(StatusCodes.FORBIDDEN).send('[App] Forbidden!');
   }
 });
 
