@@ -84,11 +84,11 @@ $ docker-compose rm
 
 ```
 $ curl \
--d '{"login": "admin",
-        "password": "admin"}' \
--H "Content-Type: application/json" \
--X POST localhost:4000/login \
-| python -m json.tool
+    -d '{"login": "admin",
+            "password": "admin"}' \
+    -H "Content-Type: application/json" \
+    -X POST localhost:4000/login \
+    | python -m json.tool
 ```
 
 <br/>
@@ -97,7 +97,7 @@ $ curl \
 
 ```
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTljMGJkYzIzMzBhZmIxNWY5ZDA0NCIsImlhdCI6MTYwMzkxNDc0OX0.JboHbReUuTiEcHGz0S5_XxsciQmPbTTP6KbjGm1OKsw"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluIiwicGFzc3dvcmQiOiIkMmEkMTAkdTZBQTd2cmxUZWxLcjJ5bmY4THh1T2JQdTJmVDRnNGloVlU4Qkd1RTNXSzJTSVlhRS9WbC4iLCJpYXQiOjE2MjQ2OTczOTN9.D6VUelPXJF320xcjRPa7ETZzGYO6ZNNbGdVL2iwnnqY"
 }
 ```
 

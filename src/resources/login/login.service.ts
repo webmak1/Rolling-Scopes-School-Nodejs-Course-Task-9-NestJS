@@ -19,7 +19,7 @@ const login = async (login: string, password: string): Promise<string> => {
     {
       login,
     },
-    { select: ['login', 'password'] }
+    { select: ['id', 'login', 'password'] }
   );
 
   if (!user) {
@@ -39,13 +39,14 @@ const login = async (login: string, password: string): Promise<string> => {
     throw new Error('[App] UNAUTHORIZED!');
   }
 
-  const token: string = await generateJwt(user);
+  const token: string = generateJwt(user);
   return token;
 };
 
 const generateJwt = (user: UserEntity) => {
   return sign(
     {
+      id: user.id,
       login: user.login,
       password: user.password,
     },
