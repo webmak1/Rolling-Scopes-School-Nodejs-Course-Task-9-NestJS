@@ -251,6 +251,17 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 
 :heavy_check_mark: Пароли пользователей сохраняются в базу в виде хэша с использованием bcrypt. +20 баллов.
 
+См. user.model.ts
+
+https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/resources/users/user.model.ts
+
+```
+  @BeforeInsert()
+  async hashPassword(): Promise<void> {
+    this.password = await hash(this.password, 10);
+  }
+```
+
 :heavy_check_mark: Добавлен роут /login, связанная с ним логика разделена между контроллером (middleware) и соответствующим сервисом. В случае отсутствия юзера в БД, возвращается 403 (Forbidden) HTTP статус. +20 баллов.
 
 :heavy_check_mark: JWT токен содержит userId и login, секретный ключ хранится в .env +20 баллов.
@@ -273,6 +284,12 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 :heavy_check_mark: За каждую ошибку компилятора -20 баллов
 
 :heavy_check_mark: Для успешного прохождения тестов обязательно наличие в БД юзера с логином - admin, паролем - admin. Все тесты npm run test:auth должны проходить успешно, каждый не пройденный тест минус 20 баллов.
+
+Пользователь admin/admin создается при старте приложения. 
+
+Выполняется скрипт.
+
+https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/1624496892902-CreateMigrations.ts
 
 :heavy_check_mark: Имеются явно указанные типы any, unknown -20 баллов за каждое использование
 
