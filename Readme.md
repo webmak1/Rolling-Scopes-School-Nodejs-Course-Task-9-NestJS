@@ -1,4 +1,4 @@
-# RS School Task 7 PostgreSQL Typeorm
+# RS School Task 8 Authentification JWT
 
 Привет!
 
