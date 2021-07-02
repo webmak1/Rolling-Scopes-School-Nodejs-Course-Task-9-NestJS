@@ -11,14 +11,15 @@
     "build": "NODE_PATH=./src tsc",
     "start": "NODE_PATH=./src ts-node src/server.ts",
     "nodemon": "NODE_PATH=./src nodemon",
-    "dev": "yarn db:migrate && yarn nodemon",
+    "dev": "yarn db:migrate && yarn db:seed && yarn nodemon",
     "lint": "NODE_PATH=./src eslint --ext .js,.ts --fix src/",
     "test": "NODE_PATH=./src cross-env DEBUG=rs:* jest --testMatch \"<rootDir>/test/e2e/test/*.test.js\" --noStackTrace --runInBand --watch",
     "test:auth": "NODE_PATH=./src cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js --config=src/ormconfig.ts",
     "db:drop": "NODE_PATH=./src yarn typeorm schema:drop",
     "db:create": "NODE_PATH=./src yarn typeorm migration:generate -- -n",
-    "db:migrate": "NODE_PATH=./src yarn typeorm migration:run"
+    "db:migrate": "NODE_PATH=./src yarn typeorm migration:run",
+    "db:seed": "NODE_PATH=./src ts-node ./node_modules/typeorm/cli.js --config=src/ormseedconfig.ts migration:run"
   },
   "keywords": [
     "rs",
@@ -54,6 +55,7 @@
     "dotenv": "9.0.2",
     "express": "4.17.1",
     "http-status-codes": "^2.1.4",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
@@ -65,7 +67,9 @@
     "yamljs": "0.3.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.12",
+    "@types/jsonwebtoken": "^8.5.2",
     "@types/lodash": "^4.14.170",
     "@types/node": "^15.6.1",
     "@types/swagger-ui-express": "^4.1.2",
@@ -73,6 +77,7 @@
     "@types/yamljs": "^0.2.31",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
+    "bcryptjs": "^2.4.3",
     "chai": "4.3.4",
     "debug": "4.3.1",
     "dirty-chai": "2.0.1",

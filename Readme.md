@@ -1,21 +1,21 @@
-# RS School Task 7 PostgreSQL Typeorm
+# RS School Task 8 Authentification JWT
 
 Привет!
 
 Разрабатывается и тестируется в последней Ubuntu LTS.
 
-Если вы работаете windows и есть gmail аккаунт, работу можно протестировать в бесплатных облаках google.  
+Если вы работаете в windows и есть gmail аккаунт, работу можно протестировать в бесплатных облаках google.  
 https://shell.cloud.google.com/
 
 <br/>
 
 ### Запуск
 
-Нужно установить docker и docker-compose.
+Нужно установить <a href="//sysadm.ru/devops/containers/docker/setup/ubuntu/">docker и docker-compose</a>.
 
-Скопировать проект.
+Клонировать проект. Ветка dev уже установлена по умолчанию.
 
-В каталоге Rolling-Scopes-School-Nodejs-Course-Task-7-PostgreSQL-Typeorm выполнить.
+В каталоге Task-8-Authentification-JWT выполнить.
 
 <br/>
 
@@ -25,9 +25,19 @@ $ docker-compose up --build
 
 <br/>
 
-Чтобы проверить работу, можно подключиться
+**Ожидаемый результат**
 
-http://localhost:4000/doc/
+<br/>
+
+![Application](/img/pic-01.gif?raw=true)
+
+<br/>
+
+Чтобы проверить работу, можно запустить тесты
+
+```
+$ npm run test:auth
+```
 
 <br/>
 
@@ -52,41 +62,214 @@ $ docker-compose rm
 
 <br/>
 
-### Возможные проверки
+**Можно удалить и ренее созданные объекты docker**
 
-Запуск приложения и тестов.
-
-<br/>
-
-![Application](/img/pic-01.gif?raw=true)
-
-<br/>
-
-**Ошибки линтера отсутствуют:**
-
-![Application](/img/pic-02.png?raw=true)
+```
+$ docker system prune -a
+$ docker container prune
+$ docker image prune -a
+$ docker volume prune
+$ docker network prune
+```
 
 <br/>
 
 ### Возможно, полезные команды
 
-    $ yarn db:drop
-    $ yarn db:create CreateMigrations
-    $ yarn db:migrate
+```
+$ yarn db:drop
+$ yarn db:create CreateMigrations
+$ yarn db:migrate
+$ yarn db:seed
+```
 
 <br/>
 
-### Комментарии по выполненной работе
+### Возможные проверки
 
-:heavy_check_mark: В качестве источника данных для users используется PostgreSQL база данных, работа с которой происходит при помощи typeorm +40 баллов.
+<br/>
 
-:heavy_check_mark: В качестве источника данных для tasks используется PostgreSQL база данных, работа с которой происходит при помощи typeorm +40 баллов.
+### Логин пользователем admin/admin
 
-:heavy_check_mark: В качестве источника данных для boards используется PostgreSQL база данных, работа с которой происходит при помощи typeorm +40 баллов.
+```
+$ curl \
+    -d '{"login": "admin",
+            "password": "admin"}' \
+    -H "Content-Type: application/json" \
+    -X POST localhost:4000/login \
+    | python -m json.tool
+```
 
-:heavy_check_mark: Для создания таблиц с сущностями используются миграции. +50 баллов
+<br/>
 
-:heavy_check_mark: Переменные, используемые для подключения к базе данных, хранятся в .env +10 баллов.
+**Возвращает токен:**
+
+```
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MWI0Yjg0LWFjNDItNDQ1NS1iZjZkLWQ5OWMzNmMzOWQ4MiIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwNjIwNn0.UDq8dBHsEPHIVgOrQ093egunpV_QlUhPhrYt1i4ii6s"
+}
+```
+
+<br/>
+
+```
+$ export TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc1MWI0Yjg0LWFjNDItNDQ1NS1iZjZkLWQ5OWMzNmMzOWQ4MiIsImxvZ2luIjoiYWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCR1NkFBN3ZybFRlbEtyMnluZjhMeHVPYlB1MmZUNGc0aWhWVThCR3VFM1dLMlNJWWFFL1ZsLiIsImlhdCI6MTYyNDcwNjIwNn0.UDq8dBHsEPHIVgOrQ093egunpV_QlUhPhrYt1i4ii6s
+```
+
+<br/>
+
+### Создать пользователя user/user
+
+```
+$ curl \
+    -d '{"name": "user",
+            "login": "user",
+            "password": "user"}' \
+    -H "Content-Type: application/json" \
+    -H "authorization: Bearer ${TOKEN}" \
+    -X POST localhost:4000/users \
+    | python -m json.tool
+```
+
+<br/>
+
+**возвращает:**
+
+```
+{
+    "id": "705ca36e-b7db-4aca-9e1d-199422f83f59",
+    "login": "user",
+    "name": "user"
+}
+```
+
+<br/>
+
+### Пробуем получить всех пользователей без token
+
+<br/>
+
+```
+$ curl -s -o /dev/null -w "%{http_code}" \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users
+```
+
+<br/>
+
+**Результат - Unauthorized:**  
+401
+
+<br/>
+
+### Пробуем получить всех пользователей с неправильным token
+
+<br/>
+
+```
+$ curl -s -o /dev/null -w "%{http_code}" \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users \
+    -H "authorization: Bearer ABCDEFGH"
+```
+
+<br/>
+
+**Результат - Unauthorized:**  
+401
+
+<br/>
+
+### Пробуем получить всех пользователей с валидным token
+
+<br/>
+
+```
+$ curl \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users \
+    -H "authorization: Bearer ${TOKEN}" \
+    | python -m json.tool
+```
+
+<br/>
+
+**Результат:**
+
+```
+[
+    {
+        "id": "751b4b84-ac42-4455-bf6d-d99c36c39d82",
+        "login": "admin",
+        "name": "admin"
+    },
+    {
+        "id": "705ca36e-b7db-4aca-9e1d-199422f83f59",
+        "login": "user",
+        "name": "user"
+    }
+]
+```
+
+<br/>
+
+**Повторяем, чтобы проверить код**
+
+```
+$ curl -s -o /dev/null -w "%{http_code}" \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users \
+    -H "authorization: Bearer ${TOKEN}" \
+    | python -m json.tool
+```
+
+<br/>
+
+**Результат - OK:**  
+200
+
+<br/>
+
+### Пробуем подключиться пользователем отсутствующем в базе данных fake/fake
+
+```
+$ curl -s -o /dev/null -w "%{http_code}"  \
+    -d '{"login": "fake",
+            "password": "fake"}' \
+    -H "Content-Type: application/json" \
+    -X POST localhost:4000/login
+```
+
+<br/>
+
+**Возвращает Forbidden:**  
+403
+
+<br/>
+
+## Комментарии к задачам:
+
+:heavy_check_mark: Пароли пользователей сохраняются в базу в виде хэша с использованием bcrypt. +20 баллов.
+
+См. user.model.ts
+
+https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/resources/users/user.model.ts
+
+```
+  @BeforeInsert()
+  async hashPassword(): Promise<void> {
+    this.password = await hash(this.password, 10);
+  }
+```
+
+:heavy_check_mark: Добавлен роут /login, связанная с ним логика разделена между контроллером (middleware) и соответствующим сервисом. В случае отсутствия юзера в БД, возвращается 403 (Forbidden) HTTP статус. +20 баллов.
+
+:heavy_check_mark: JWT токен содержит userId и login, секретный ключ хранится в .env +20 баллов.
+
+:heavy_check_mark: Доступ ко всем роутам, за исключением /login, /doc и /, требует аутентификации +20 баллов.
+
+:heavy_check_mark: Проверка на наличие токена в реквесте реализована в отдельной middleware на уровне приложения.
+В случае если токен не валидный, или отсутствует, возвращается 401 (Unauthorized) HTTP статус. +20 баллов.
 
 <br/>
 
@@ -94,35 +277,21 @@ $ docker-compose rm
 
 :heavy_check_mark: Наличие изменений в тестах либо в workflow минус 100 баллов
 
-нет
-
-:heavy_check_mark: Внесение изменений в репозиторий после дедлайна не считая
-
-нет
-
-:heavy_check_mark: коммиты, вносящие изменения только в Readme.md минус 30% от максимального балла за задание (для этого задания 54 баллов)
-
-нет
+:heavy_check_mark: Внесение изменений в репозиторий после дедлайна не считая коммиты, вносящие изменения только в Readme.md минус 30% от максимального балла за задание (для этого задания 30 баллов)
 
 :heavy_check_mark: За каждую ошибку линтера при запуске npm run lint на основе локального конфига -20 баллов (именно errors, не warnings)
 
-нет
-
 :heavy_check_mark: За каждую ошибку компилятора -20 баллов
 
-нет
+:heavy_check_mark: Для успешного прохождения тестов обязательно наличие в БД юзера с логином - admin, паролем - admin. Все тесты npm run test:auth должны проходить успешно, каждый не пройденный тест минус 20 баллов.
 
-За каждый непроходящий тест -20 баллов
+Пользователь admin/admin создается при старте приложения. 
 
-нет
+Выполняется скрипт.
+
+https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/1624496892902-CreateMigrations.ts
 
 :heavy_check_mark: Имеются явно указанные типы any, unknown -20 баллов за каждое использование
-
-ХЗ. компилятор сам говорит, что ему нужно, чтобы для приведения типа string к массиву объектов, сначала нужно привести к типу unknown, а уже потом к нужному типу.
-
-Так, что unknown используется для переопределения и сразу явно указывается новый тип.
-
-Считаю, что нет.
 
 :heavy_check_mark: За отсутствие отдельной ветки для разработки -20 баллов
 

@@ -7,7 +7,7 @@ dotenv.config({
 
 const { PORT, NODE_ENV, JWT_SECRET_KEY, AUTH_MODE = false } = process.env;
 
-if (!PORT) {
+if (!PORT || !JWT_SECRET_KEY) {
   throw new Error('[App] Some Issue with .env file');
 }
 
