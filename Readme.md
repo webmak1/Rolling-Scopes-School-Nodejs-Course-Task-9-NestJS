@@ -1,4 +1,5 @@
-# RS School Task 8 Authentification JWT
+# RS School Task 9 NestJS
+
 
 Привет!
 
@@ -300,3 +301,22 @@ https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/162449
 :heavy_check_mark: За неполную информацию в описании Pull Request (отсутствует либо некорректен один из 3 обязательных пунктов) -10 баллов
 
 :heavy_check_mark: Меньше 3 коммитов в ветке разработки, не считая коммиты, вносящие изменения только в Readme.md — -20 баллов
+
+
+<br/>
+
+### Шаги
+
+<br/>
+
+    $ npm install -g @nestjs/cli
+    $ npm install -g typescript
+
+<br/>
+
+    $ cd app/server
+    $ nest new .
+
+<br/>
+
+    $ nest generate resource users
