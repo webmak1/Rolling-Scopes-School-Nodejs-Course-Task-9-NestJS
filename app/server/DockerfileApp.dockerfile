@@ -8,7 +8,6 @@ COPY package.json ./
 RUN npm install --silent
 # COPY ./ ./
 
+# CMD ["npm", "run", "start:dev"]
+CMD ["yarn", "start:dev"]
 
-CMD ["npm", "run", "dev"]
-
-# CMD ["npm", "run", "dev"]

@@ -1,6 +1,5 @@
 # RS School Task 9 NestJS
 
-
 Привет!
 
 Разрабатывается и тестируется в последней Ubuntu LTS.
@@ -286,7 +285,7 @@ https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/resources/us
 
 :heavy_check_mark: Для успешного прохождения тестов обязательно наличие в БД юзера с логином - admin, паролем - admin. Все тесты npm run test:auth должны проходить успешно, каждый не пройденный тест минус 20 баллов.
 
-Пользователь admin/admin создается при старте приложения. 
+Пользователь admin/admin создается при старте приложения.
 
 Выполняется скрипт.
 
@@ -301,7 +300,6 @@ https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/162449
 :heavy_check_mark: За неполную информацию в описании Pull Request (отсутствует либо некорректен один из 3 обязательных пунктов) -10 баллов
 
 :heavy_check_mark: Меньше 3 коммитов в ветке разработки, не считая коммиты, вносящие изменения только в Readme.md — -20 баллов
-
 
 <br/>
 
@@ -323,7 +321,6 @@ https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/162449
     $ nest generate resource tasks
     $ nest generate resource boards
 
-
 <br/>
 
-    $ yarn add typeorm bcryptjs
+    $ yarn add typeorm bcryptjs pg
