@@ -320,3 +320,10 @@ https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/162449
 <br/>
 
     $ nest generate resource users
+    $ nest generate resource tasks
+    $ nest generate resource boards
+
+
+<br/>
+
+    $ yarn add typeorm bcryptjs
