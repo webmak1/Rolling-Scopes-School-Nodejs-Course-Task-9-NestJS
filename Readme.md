@@ -324,3 +324,4 @@ https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/162449
 <br/>
 
     $ yarn add typeorm bcryptjs pg
+    $ yarn add @nestjs/typeorm
