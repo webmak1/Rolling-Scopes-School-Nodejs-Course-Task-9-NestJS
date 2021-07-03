@@ -11,7 +11,7 @@ import {
 @Entity({ name: 'users' })
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   name: string;
@@ -19,7 +19,7 @@ export class UserEntity {
   @Column()
   login: string;
 
-  @Column()
+  @Column({ select: false })
   password: string;
 
   @OneToMany(() => TaskEntity, (task) => task.user)
