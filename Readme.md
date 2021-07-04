@@ -320,8 +320,9 @@ https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/162449
     $ nest generate resource users
     $ nest generate resource tasks
     $ nest generate resource boards
+    $ nest generate resource login
 
 <br/>
 
-    $ yarn add typeorm bcryptjs pg http-status-codes
+    $ yarn add typeorm bcryptjs pg
     $ yarn add @nestjs/typeorm

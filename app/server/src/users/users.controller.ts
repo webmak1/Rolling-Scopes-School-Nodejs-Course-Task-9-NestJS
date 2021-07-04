@@ -3,13 +3,13 @@ import {
   Controller,
   Delete,
   Get,
+  HttpStatus,
   Param,
   Post,
   Put,
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
-import { StatusCodes } from 'http-status-codes';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -27,10 +27,10 @@ export class UsersController {
   async createUser(@Res() res: Response, @Body() createUserDto: CreateUserDto) {
     try {
       return res
-        .status(StatusCodes.CREATED)
+        .status(HttpStatus.CREATED)
         .json(await this.usersService.createUser(createUserDto));
     } catch (err) {
-      return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
+      return res.status(HttpStatus.NOT_FOUND).send('Something bad happened!');
     }
   }
 
