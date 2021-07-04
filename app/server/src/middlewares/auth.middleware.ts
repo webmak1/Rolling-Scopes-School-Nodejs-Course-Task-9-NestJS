@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { HttpStatus, Injectable, NestMiddleware } from '@nestjs/common';
 import { config } from 'common/config';
 import { NextFunction, Response } from 'express';
 import { verify } from 'jsonwebtoken';
@@ -21,12 +21,18 @@ export class AuthMiddleware implements NestMiddleware {
 
     try {
       const decode = verify(token, config.JWT_SECRET_KEY);
+
+      if (!decode) {
+        return res.status(HttpStatus.UNAUTHORIZED).send('[App] NOT AUTHORIZED');
+      }
+
       // const user = await this.userService.findById((decode as any).id);
       // req.user = user;
       next();
     } catch (err) {
-      req.user = null;
-      next();
+      // req.user = null;
+      // next();
+      return res.status(HttpStatus.UNAUTHORIZED).send('[App] NOT AUTHORIZED');
     }
   }
 }

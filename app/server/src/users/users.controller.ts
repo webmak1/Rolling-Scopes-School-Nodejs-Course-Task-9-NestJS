@@ -8,8 +8,10 @@ import {
   Post,
   Put,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { AuthGuard } from 'login/guards/auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -24,6 +26,7 @@ export class UsersController {
   }
 
   @Post()
+  @UseGuards(AuthGuard)
   async createUser(@Res() res: Response, @Body() createUserDto: CreateUserDto) {
     try {
       return res
