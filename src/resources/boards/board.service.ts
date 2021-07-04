@@ -27,11 +27,9 @@ const get = async (boardId: string): Promise<IBoard> => {
 const create = async (title: string, columns: IColumn[]): Promise<IBoard> => {
   const boardRepository = getRepository(BoardEntity);
 
-  const columnsRes = columnsToArrayofObjects(columns);
-
   const board = new BoardEntity();
   board.title = title;
-  board.columns = columnsRes;
+  board.columns = columns;
 
   const createdBoard = await boardRepository.save(board);
   if (!createdBoard) {
@@ -47,11 +45,10 @@ const update = async (
   columns: IColumn[]
 ): Promise<IBoard> => {
   const boardRepository = getRepository(BoardEntity);
-  const columnsRes = columnsToArrayofObjects(columns);
 
   const updatedBoard = await boardRepository.update(boardId, {
     title,
-    columns: columnsRes,
+    columns,
   });
 
   if (!updatedBoard.affected) {
@@ -76,21 +73,6 @@ const remove = async (boardId: string): Promise<IBoard> => {
   // DELETE BOARDS TASKS
   await tasksService.deleteBoardsTasks(boardId);
   return boardDeleteResult;
-};
-
-const columnsToArrayofObjects = (columns: IColumn[]): IColumn[] => {
-  const columnsParsed: IColumn[] = [];
-
-  try {
-    const columnsConverted = (columns as unknown) as IColumn[];
-    columnsConverted.map((column: IColumn) => {
-      columnsParsed.push(column);
-    });
-  } catch (err) {
-    console.log("[App] Can't convert columns to Array of Objects");
-  }
-
-  return columnsParsed;
 };
 
 export const boardsService = {

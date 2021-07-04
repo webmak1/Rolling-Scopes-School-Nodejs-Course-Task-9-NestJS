@@ -6,7 +6,10 @@ import {
   Param,
   Post,
   Put,
+  Res,
 } from '@nestjs/common';
+import { Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
@@ -15,29 +18,37 @@ import { UpdateBoardDto } from './dto/update-board.dto';
 export class BoardsController {
   constructor(private readonly boardsService: BoardsService) {}
 
-  @Post()
-  createBoard(@Body() createBoardDto: CreateBoardDto) {
-    console.log('Create Board');
-    return this.boardsService.createBoard(createBoardDto);
-  }
-
   @Get()
-  getAllBoards() {
+  async getAllBoards() {
     return this.boardsService.getAllBoards();
   }
 
+  @Post()
+  async createBoard(@Body() createBoardDto: CreateBoardDto) {
+    return this.boardsService.createBoard(createBoardDto);
+  }
+
   @Get(':id')
-  getBoardById(@Param('id') id: string) {
-    return this.boardsService.getBoardById(+id);
+  async getBoardById(@Res() res: Response, @Param('id') boardId: string) {
+    try {
+      return res
+        .status(StatusCodes.OK)
+        .json(await this.boardsService.getBoardById(boardId));
+    } catch (err) {
+      return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
+    }
   }
 
   @Put(':id')
-  updateBoard(@Param('id') id: string, @Body() updateBoardDto: UpdateBoardDto) {
-    return this.boardsService.updateBoard(id, updateBoardDto);
+  async updateBoard(
+    @Param('id') boardId: string,
+    @Body() updateBoardDto: UpdateBoardDto,
+  ) {
+    return this.boardsService.updateBoard(boardId, updateBoardDto);
   }
 
   @Delete(':id')
-  removeBoard(@Param('id') id: string) {
-    return this.boardsService.removeBoard(id);
+  async removeBoard(@Param('id') boardId: string) {
+    return this.boardsService.removeBoard(boardId);
   }
 }
