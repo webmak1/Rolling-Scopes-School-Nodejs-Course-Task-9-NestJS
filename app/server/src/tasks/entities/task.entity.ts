@@ -1,3 +1,4 @@
+import { BoardEntity } from 'boards/entities/board.entity';
 import {
   Column,
   Entity,
@@ -27,6 +28,12 @@ export class TaskEntity {
 
   @Column({ type: 'varchar', nullable: true })
   userId: string | null;
+
+  @ManyToOne(() => BoardEntity, (board) => board.tasks, {
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'boardId' })
+  board: BoardEntity;
 
   @Column('uuid')
   // @Column({ type: 'uuid', nullable: true })
