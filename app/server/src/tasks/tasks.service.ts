@@ -37,24 +37,13 @@ export class TasksService {
   }
 
   async updateTask(boardId: string, updateTaskDto: UpdateTaskDto) {
-    console.log('boardId');
-    console.log(boardId);
-
-    console.log('updateTaskDto');
-    console.log(updateTaskDto);
-
     const updatedTask = await this.taskRepository.update(boardId, {
       ...updateTaskDto,
     });
     if (!updatedTask.affected) {
       throw new Error("[App] Can't Update Task!");
     }
-
     const res = await this.getTaskById(boardId);
-
-    console.log('res');
-    console.log(res);
-
     return res;
   }
 
