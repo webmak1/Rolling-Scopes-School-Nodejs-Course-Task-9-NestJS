@@ -18,7 +18,7 @@ export class UsersService {
   }
 
   async createUser(createUserDto: CreateUserDto) {
-    let createdUser = await this.userRepository.save(createUserDto);
+    const createdUser = await this.userRepository.save(createUserDto);
     if (!createdUser) {
       throw new Error("[App] Can't create User!");
     }
