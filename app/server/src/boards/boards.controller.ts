@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { BoardsService } from './boards.service';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
@@ -8,27 +16,28 @@ export class BoardsController {
   constructor(private readonly boardsService: BoardsService) {}
 
   @Post()
-  create(@Body() createBoardDto: CreateBoardDto) {
-    return this.boardsService.create(createBoardDto);
+  createBoard(@Body() createBoardDto: CreateBoardDto) {
+    console.log('Create Board');
+    return this.boardsService.createBoard(createBoardDto);
   }
 
   @Get()
-  findAll() {
-    return this.boardsService.findAll();
+  getAllBoards() {
+    return this.boardsService.getAllBoards();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.boardsService.findOne(+id);
+  getBoardById(@Param('id') id: string) {
+    return this.boardsService.getBoardById(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBoardDto: UpdateBoardDto) {
-    return this.boardsService.update(+id, updateBoardDto);
+  @Put(':id')
+  updateBoard(@Param('id') id: string, @Body() updateBoardDto: UpdateBoardDto) {
+    return this.boardsService.updateBoard(id, updateBoardDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.boardsService.remove(+id);
+  removeBoard(@Param('id') id: string) {
+    return this.boardsService.removeBoard(id);
   }
 }

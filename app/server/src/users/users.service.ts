@@ -18,8 +18,8 @@ export class UsersService {
       throw new Error("[App] Can't create User!");
     }
 
-    console.log('createdUser');
-    console.log(createdUser);
+    // console.log('createdUser');
+    // console.log(createdUser);
 
     return createdUser;
   }
