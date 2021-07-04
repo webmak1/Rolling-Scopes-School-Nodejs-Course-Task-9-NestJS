@@ -16,9 +16,6 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest<any>();
     const response = context.switchToHttp().getResponse<any>();
 
-    console.log('request');
-    console.log(request);
-
     if (!request.headers.authorization) {
       return response
         .status(HttpStatus.UNAUTHORIZED)
@@ -27,14 +24,8 @@ export class AuthGuard implements CanActivate {
 
     const token = request.headers.authorization.split(' ')[1];
 
-    console.log('TOKEN');
-    console.log(token);
-
     try {
       const decode = verify(token, config.JWT_SECRET_KEY);
-
-      console.log('decode');
-      console.log(decode);
 
       if (!decode) {
         return response

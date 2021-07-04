@@ -5,15 +5,22 @@ dotenv.config({
   path: path.join(__dirname, '../../.env'),
 });
 
-const { PORT, NODE_ENV, JWT_SECRET_KEY, AUTH_MODE = false } = process.env;
+const {
+  APP_PORT,
+  NODE_ENV,
+  JWT_SECRET_KEY,
+  AUTH_MODE = false,
+  USE_FASTIFY,
+} = process.env;
 
-if (!PORT || !JWT_SECRET_KEY) {
+if (!APP_PORT || !JWT_SECRET_KEY) {
   throw new Error('[App] Some Issue with .env file');
 }
 
 export const config = {
-  PORT,
+  APP_PORT,
   NODE_ENV,
   JWT_SECRET_KEY,
   AUTH_MODE,
+  USE_FASTIFY,
 };
