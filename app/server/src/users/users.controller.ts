@@ -8,8 +8,10 @@ import {
   Post,
   Put,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { AuthGuard } from 'guards/auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
@@ -19,11 +21,13 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
+  @UseGuards(AuthGuard)
   async getAllUsers() {
     return this.usersService.getAllUsers();
   }
 
   @Post()
+  @UseGuards(AuthGuard)
   async createUser(@Res() res: Response, @Body() createUserDto: CreateUserDto) {
     try {
       return res
@@ -35,11 +39,13 @@ export class UsersController {
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard)
   async getUserById(@Param('id') userId: string) {
     return this.usersService.getUserById(userId);
   }
 
   @Put(':id')
+  @UseGuards(AuthGuard)
   async updateUser(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
@@ -52,6 +58,7 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard)
   async removeUser(@Param('id') userId: string) {
     return this.usersService.removeUser(userId);
   }

@@ -7,8 +7,10 @@ import {
   Post,
   Put,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { AuthGuard } from 'guards/auth.guard';
 import { StatusCodes } from 'http-status-codes';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -19,12 +21,14 @@ export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @Get()
+  @UseGuards(AuthGuard)
   async getAllTasks() {
     //console.log('HEHE');
     return this.tasksService.getAllTasks();
   }
 
   @Post()
+  @UseGuards(AuthGuard)
   async createTask(
     @Res() res: Response,
     @Param('boardId') boardId: string,
@@ -42,6 +46,7 @@ export class TasksController {
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard)
   async getTaskById(@Res() res: Response, @Param('id') taskId: string) {
     try {
       return res.json(await this.tasksService.getTaskById(taskId));
@@ -51,6 +56,7 @@ export class TasksController {
   }
 
   @Put(':id')
+  @UseGuards(AuthGuard)
   async update(
     @Res() res: Response,
     @Param('id') taskId: string,
@@ -67,6 +73,7 @@ export class TasksController {
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard)
   async remove(@Res() res: Response, @Param('id') taskId: string) {
     try {
       return res.json(await this.tasksService.removeTask(taskId));
