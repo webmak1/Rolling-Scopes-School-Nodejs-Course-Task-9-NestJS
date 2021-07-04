@@ -12,6 +12,11 @@ export class UsersService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
+  async getAllUsers() {
+    const users = await this.userRepository.find({});
+    return users;
+  }
+
   async createUser(createUserDto: CreateUserDto) {
     let createdUser = await this.userRepository.save(createUserDto);
     if (!createdUser) {
@@ -22,11 +27,6 @@ export class UsersService {
     // console.log(createdUser);
 
     return createdUser;
-  }
-
-  async getAllUsers() {
-    const users = await this.userRepository.find({});
-    return users;
   }
 
   async getUserById(userId: string) {

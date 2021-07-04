@@ -31,9 +31,6 @@ export class TasksController {
     @Body() createTaskDto: CreateTaskDto,
   ) {
     try {
-      // console.log('boardId');
-      // console.log(boardId);
-
       return res
         .status(StatusCodes.CREATED)
         .json(await this.tasksService.createTask(boardId, createTaskDto));
@@ -45,19 +42,36 @@ export class TasksController {
   }
 
   @Get(':id')
-  async getTaskById(@Param('id') taskId: string) {
-    return this.tasksService.getTaskById(taskId);
+  async getTaskById(@Res() res: Response, @Param('id') taskId: string) {
+    try {
+      return res.json(await this.tasksService.getTaskById(taskId));
+    } catch (err) {
+      return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
+    }
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    //console.log('HEHE');
-    return this.tasksService.updateTask(+id, updateTaskDto);
+  async update(
+    @Res() res: Response,
+    @Param('id') taskId: string,
+    @Body() updateTaskDto: UpdateTaskDto,
+  ) {
+    try {
+      return res.json(
+        await this.tasksService.updateTask(taskId, updateTaskDto),
+      );
+    } catch (err) {
+      console.log(err);
+      return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
+    }
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string) {
-    //console.log('HEHE');
-    return this.tasksService.removeTask(+id);
+  async remove(@Res() res: Response, @Param('id') taskId: string) {
+    try {
+      return res.json(await this.tasksService.removeTask(taskId));
+    } catch (err) {
+      return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
+    }
   }
 }
