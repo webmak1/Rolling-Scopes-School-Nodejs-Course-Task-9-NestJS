@@ -29,6 +29,7 @@ export class TaskEntity {
   userId: string | null;
 
   @Column('uuid')
+  // @Column({ type: 'uuid', nullable: true })
   boardId: string;
 
   @Column({ type: 'json', nullable: true })

@@ -16,15 +16,14 @@ export class TasksService {
     return `This action returns all tasks`;
   }
 
-  async createTask(createTaskDto: CreateTaskDto) {
-    const createdTask = await this.taskRepository.save(createTaskDto);
+  async createTask(boardId: string, createTaskDto: CreateTaskDto) {
+    const createdTask = await this.taskRepository.save({
+      ...createTaskDto,
+      boardId,
+    });
     if (!createdTask) {
       throw new Error("[App] Can't create Task!");
     }
-
-    console.log('createdTask');
-    console.log(createdTask);
-
     return createdTask;
   }
 
