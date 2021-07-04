@@ -11,28 +11,33 @@ export class AuthMiddleware implements NestMiddleware {
 
   // async use(req: IExpressRequest, res: Response, next: NextFunction) {
   async use(req: any, res: Response, next: NextFunction) {
+    console.log('AuthMiddleware');
+
     if (!req.headers.authorization) {
-      req.user = null;
-      next();
-      return;
+      return res
+        .status(HttpStatus.UNAUTHORIZED)
+        .send('[App] MIDDLEWARE NOT AUTHORIZED');
     }
 
     const token = req.headers.authorization.split(' ')[1];
 
+    console.log('TOKEN');
+    console.log(token);
+
     try {
       const decode = verify(token, config.JWT_SECRET_KEY);
+
+      console.log('decode');
+      console.log(decode);
 
       if (!decode) {
         return res.status(HttpStatus.UNAUTHORIZED).send('[App] NOT AUTHORIZED');
       }
-
-      // const user = await this.userService.findById((decode as any).id);
-      // req.user = user;
       next();
     } catch (err) {
-      // req.user = null;
-      // next();
-      return res.status(HttpStatus.UNAUTHORIZED).send('[App] NOT AUTHORIZED');
+      return res
+        .status(HttpStatus.UNAUTHORIZED)
+        .send('[App] MIDDLEWARE NOT AUTHORIZED');
     }
   }
 }
