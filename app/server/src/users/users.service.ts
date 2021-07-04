@@ -22,11 +22,8 @@ export class UsersService {
     if (!createdUser) {
       throw new Error("[App] Can't create User!");
     }
-
-    // console.log('createdUser');
-    // console.log(createdUser);
-
-    return createdUser;
+    const user = await this.getUserById(createdUser.id);
+    return user;
   }
 
   async getUserById(userId: string) {
