@@ -8,9 +8,11 @@ import {
   Post,
   Put,
   Res,
+  UseFilters,
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { HttpExceptionFilter } from 'filters/http-exception.filter';
 import { AuthGuard } from 'guards/auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -22,12 +24,14 @@ export class UsersController {
 
   @Get()
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async getAllUsers() {
     return this.usersService.getAllUsers();
   }
 
   @Post()
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async createUser(@Res() res: Response, @Body() createUserDto: CreateUserDto) {
     try {
       return res
@@ -41,6 +45,7 @@ export class UsersController {
 
   @Get(':id')
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async getUserById(@Res() res: Response, @Param('id') userId: string) {
     try {
       return res
@@ -54,6 +59,7 @@ export class UsersController {
 
   @Put(':id')
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async updateUser(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
@@ -67,6 +73,7 @@ export class UsersController {
 
   @Delete(':id')
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async removeUser(@Param('id') userId: string) {
     return this.usersService.removeUser(userId);
   }

@@ -7,9 +7,11 @@ import {
   Post,
   Put,
   Res,
+  UseFilters,
   UseGuards,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { HttpExceptionFilter } from 'filters/http-exception.filter';
 import { AuthGuard } from 'guards/auth.guard';
 import { StatusCodes } from 'http-status-codes';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -22,12 +24,14 @@ export class TasksController {
 
   @Get()
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async getAllTasks() {
     return this.tasksService.getAllTasks();
   }
 
   @Post()
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async createTask(
     @Res() res: Response,
     @Param('boardId') boardId: string,
@@ -46,6 +50,7 @@ export class TasksController {
 
   @Get(':id')
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async getTaskById(@Res() res: Response, @Param('id') taskId: string) {
     try {
       return res.send(await this.tasksService.getTaskById(taskId));
@@ -56,6 +61,7 @@ export class TasksController {
 
   @Put(':id')
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async updateTask(
     @Res() res: Response,
     @Param('id') taskId: string,
@@ -73,6 +79,7 @@ export class TasksController {
 
   @Delete(':id')
   @UseGuards(AuthGuard)
+  @UseFilters(new HttpExceptionFilter())
   async removeTask(@Res() res: Response, @Param('id') taskId: string) {
     try {
       return res.send(await this.tasksService.removeTask(taskId));
