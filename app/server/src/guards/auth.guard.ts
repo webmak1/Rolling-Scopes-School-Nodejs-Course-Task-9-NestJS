@@ -14,12 +14,9 @@ import { verify } from 'jsonwebtoken';
 export class AuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest<any>();
-    const response = context.switchToHttp().getResponse<any>();
 
     if (!request.headers.authorization) {
-      return response
-        .status(HttpStatus.UNAUTHORIZED)
-        .send('[App] MIDDLEWARE NOT AUTHORIZED');
+      throw new HttpException('[App] UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
     }
 
     const token = request.headers.authorization.split(' ')[1];
@@ -28,18 +25,13 @@ export class AuthGuard implements CanActivate {
       const decode = verify(token, config.JWT_SECRET_KEY);
 
       if (!decode) {
-        return response
-          .status(HttpStatus.UNAUTHORIZED)
-          .send('[App] NOT AUTHORIZED');
+        throw new HttpException('[App] UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
       }
 
       return true;
     } catch (err) {
-      // return response
-      //   .status(HttpStatus.UNAUTHORIZED)
-      //   .send('[App] MIDDLEWARE NOT AUTHORIZED');
       console.log(err);
-      throw new HttpException('[App] Not authorized', HttpStatus.UNAUTHORIZED);
+      throw new HttpException('[App] UNAUTHORIZED', HttpStatus.UNAUTHORIZED);
     }
   }
 }

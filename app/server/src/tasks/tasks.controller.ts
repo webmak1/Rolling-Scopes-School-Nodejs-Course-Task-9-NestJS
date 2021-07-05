@@ -23,7 +23,6 @@ export class TasksController {
   @Get()
   @UseGuards(AuthGuard)
   async getAllTasks() {
-    //console.log('HEHE');
     return this.tasksService.getAllTasks();
   }
 
@@ -37,7 +36,7 @@ export class TasksController {
     try {
       return res
         .status(StatusCodes.CREATED)
-        .json(await this.tasksService.createTask(boardId, createTaskDto));
+        .send(await this.tasksService.createTask(boardId, createTaskDto));
     } catch (err) {
       console.log('CREATE T1');
       console.log(err);
@@ -49,7 +48,7 @@ export class TasksController {
   @UseGuards(AuthGuard)
   async getTaskById(@Res() res: Response, @Param('id') taskId: string) {
     try {
-      return res.json(await this.tasksService.getTaskById(taskId));
+      return res.send(await this.tasksService.getTaskById(taskId));
     } catch (err) {
       return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
     }
@@ -57,13 +56,13 @@ export class TasksController {
 
   @Put(':id')
   @UseGuards(AuthGuard)
-  async update(
+  async updateTask(
     @Res() res: Response,
     @Param('id') taskId: string,
     @Body() updateTaskDto: UpdateTaskDto,
   ) {
     try {
-      return res.json(
+      return res.send(
         await this.tasksService.updateTask(taskId, updateTaskDto),
       );
     } catch (err) {
@@ -74,9 +73,9 @@ export class TasksController {
 
   @Delete(':id')
   @UseGuards(AuthGuard)
-  async remove(@Res() res: Response, @Param('id') taskId: string) {
+  async removeTask(@Res() res: Response, @Param('id') taskId: string) {
     try {
-      return res.json(await this.tasksService.removeTask(taskId));
+      return res.send(await this.tasksService.removeTask(taskId));
     } catch (err) {
       return res.status(StatusCodes.NOT_FOUND).send('Something bad happened!');
     }

@@ -38,7 +38,7 @@ export class BoardsController {
     try {
       return res
         .status(HttpStatus.OK)
-        .json(await this.boardsService.getBoardById(boardId));
+        .send(await this.boardsService.getBoardById(boardId));
     } catch (err) {
       return res.status(HttpStatus.NOT_FOUND).send('Something bad happened!');
     }

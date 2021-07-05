@@ -32,16 +32,24 @@ export class UsersController {
     try {
       return res
         .status(HttpStatus.CREATED)
-        .json(await this.usersService.createUser(createUserDto));
+        .send(await this.usersService.createUser(createUserDto));
     } catch (err) {
-      return res.status(HttpStatus.NOT_FOUND).send('Something bad happened!');
+      console.log(err);
+      return res.status(HttpStatus.NOT_FOUND).send("[App] Can't create user!");
     }
   }
 
   @Get(':id')
   @UseGuards(AuthGuard)
-  async getUserById(@Param('id') userId: string) {
-    return this.usersService.getUserById(userId);
+  async getUserById(@Res() res: Response, @Param('id') userId: string) {
+    try {
+      return res
+        .status(HttpStatus.OK)
+        .send(await this.usersService.getUserById(userId));
+    } catch (err) {
+      console.log(err);
+      return res.status(HttpStatus.NOT_FOUND).send("[App] Can't create user!");
+    }
   }
 
   @Put(':id')
