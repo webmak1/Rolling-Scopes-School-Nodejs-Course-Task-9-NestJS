@@ -38,6 +38,7 @@ export class AuthGuard implements CanActivate {
       // return response
       //   .status(HttpStatus.UNAUTHORIZED)
       //   .send('[App] MIDDLEWARE NOT AUTHORIZED');
+      console.log(err);
       throw new HttpException('[App] Not authorized', HttpStatus.UNAUTHORIZED);
     }
   }

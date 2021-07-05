@@ -16,8 +16,11 @@ export class LoginController {
         throw new Error('[App] Forbidden!');
       }
 
-      return res.json({ token });
+      // return res.json({ token });
+
+      return res.status(HttpStatus.OK).send({ token });
     } catch (err) {
+      console.log(err);
       return res.status(HttpStatus.FORBIDDEN).send('[App] Forbidden!');
     }
   }
