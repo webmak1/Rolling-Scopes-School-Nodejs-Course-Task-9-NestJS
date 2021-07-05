@@ -245,6 +245,18 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 **Возвращает Forbidden:**  
 403
 
+```
+
+$ export USER_ID=d55f78af-5ac1-459f-b376-6a50e086aee3
+
+// GET USER BY ID
+$ curl \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users/${USER_ID} \
+    -H "authorization: Bearer ${TOKEN}" \
+    | python -m json.tool
+```
+
 <br/>
 
 ## Комментарии к задачам:
@@ -265,7 +277,7 @@ https://docs.nestjs.com/techniques/logger
 
 :heavy_check_mark: В зависисимости от env переменной USE_FASTIFY Nest.js должен использовать или express или fastify +30 баллов
 
-:x:Необходимо сравнить производительность Nest.js с использованием express и fastify (можно использовать для этих целей artillery) +30 баллов
+:heavy_check_mark: Необходимо сравнить производительность Nest.js с использованием express и fastify (можно использовать для этих целей artillery) +30 баллов
 
 <br/>
 
@@ -300,4 +312,12 @@ https://docs.nestjs.com/techniques/logger
     $ npm install -g artillery@latest\
     $ artillery --version
 
-    $ DEBUG=http:response artillery run artillery.yml
+    $ DEBUG=http:response artillery run artillery.yml --output report.json
+
+    $ DEBUG=http:response artillery report report.json
+
+<br/>
+
+Или загрузить файл на сайт:
+
+https://reportviewer.artillery.io/

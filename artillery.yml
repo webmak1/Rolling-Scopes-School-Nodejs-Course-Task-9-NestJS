@@ -2,8 +2,13 @@ config:
   target: 'http://localhost:4000'
   phases:
     - duration: 30
-      arrivalRate: 1
+      arrivalRate: 5
       name: Warm up
+  # variables:
+  #   userNumber:
+  #     "1"
+  #     "2"
+  #     "3"
   # phases:
   #   - duration: 60
   #     arrivalRate: 5
@@ -17,41 +22,74 @@ config:
   #     name: Sustained load
 
 scenarios:
-  - flow:
+  - name: 'Check Users'
+    flow:
       - log: 'Getting token'
       - post:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
           url: '/login'
           json:
-            username: 'admin'
+            login: 'admin'
             password: 'admin'
           capture:
-            json: '$.access_token'
-            as: access_token
+            json: '$.token'
+            as: admin_token
           expect:
             - statusCode: 200
+      - log: 'Bearer {{ admin_token }}'
+      # - timeout: 1
+      - log: 'Create User'
+      - post:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users'
+          json:
+            name: 'user'
+            login: 'user'
+            password: 'user'
+          capture:
+            json: '$.id'
+            as: user_id
+          expect:
+            - statusCode: 200
+      # - timeout: 1
+      - log: 'Get User By ID {{ user_id }}'
       - get:
           headers:
-            Authorization: 'Bearer {{ access_token }}'
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users/{{ user_id }}'
+          expect:
+            - statusCode: 200
+      # - timeout: 1
+      - log: 'Update User By ID'
+      - put:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users/{{ user_id }}'
+          json:
+            name: 'user1'
+          expect:
+            - statusCode: 200
+      - log: 'Delete User By ID'
+      - delete:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users/{{ user_id }}'
+          json:
+            name: 'user1'
+          expect:
+            - statusCode: 200
+      # - timeout: 1
+      - log: 'Get All Users'
+      - get:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
           url: '/users'
-# scenarios:
-#   - name: 'Check Users'
-#     flow:
-#       - get:
-#           url: '/users'
-# scenarios:
-#   - name: 'Search and buy'
-#     flow:
-#       - post:
-#           url: '/search'
-#           json:
-#             kw: '{{ keyword }}'
-#           capture:
-#             - json: '$.results[0].id'
-#               as: 'productId'
-#       - get:
-#           url: '/product/{{ productId }}/details'
-#       - think: 5
-#       - post:
-#           url: '/cart'
-#           json:
-#             productId: '{{ productId }}'
+          expect:
+            - statusCode: 200
