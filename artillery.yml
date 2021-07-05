@@ -1,0 +1,57 @@
+config:
+  target: 'http://localhost:4000'
+  phases:
+    - duration: 30
+      arrivalRate: 1
+      name: Warm up
+  # phases:
+  #   - duration: 60
+  #     arrivalRate: 5
+  #     name: Warm up
+  #   - duration: 120
+  #     arrivalRate: 5
+  #     rampTo: 50
+  #     name: Ramp up load
+  #   - duration: 600
+  #     arrivalRate: 50
+  #     name: Sustained load
+
+scenarios:
+  - flow:
+      - log: 'Getting token'
+      - post:
+          url: '/login'
+          json:
+            username: 'admin'
+            password: 'admin'
+          capture:
+            json: '$.access_token'
+            as: access_token
+          expect:
+            - statusCode: 200
+      - get:
+          headers:
+            Authorization: 'Bearer {{ access_token }}'
+          url: '/users'
+# scenarios:
+#   - name: 'Check Users'
+#     flow:
+#       - get:
+#           url: '/users'
+# scenarios:
+#   - name: 'Search and buy'
+#     flow:
+#       - post:
+#           url: '/search'
+#           json:
+#             kw: '{{ keyword }}'
+#           capture:
+#             - json: '$.results[0].id'
+#               as: 'productId'
+#       - get:
+#           url: '/product/{{ productId }}/details'
+#       - think: 5
+#       - post:
+#           url: '/cart'
+#           json:
+#             productId: '{{ productId }}'

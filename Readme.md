@@ -255,8 +255,6 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 
 :heavy_check_mark: Exception filters должны использоваться для обработки исключений в приложении +30 баллов
 
-https://docs.nestjs.com/exception-filters
-
 :heavy_check_mark: @nestjs/typeorm должен использоваться для работы с базой данных +30 баллов
 
 :x: Для логирования может использоваться встроенный Logger или кастомная имплементация. +30 баллов
@@ -268,8 +266,6 @@ https://docs.nestjs.com/techniques/logger
 :heavy_check_mark: В зависисимости от env переменной USE_FASTIFY Nest.js должен использовать или express или fastify +30 баллов
 
 :x:Необходимо сравнить производительность Nest.js с использованием express и fastify (можно использовать для этих целей artillery) +30 баллов
-
-artillery.io
 
 <br/>
 
@@ -296,3 +292,12 @@ artillery.io
 
     $ yarn add typeorm bcryptjs pg
     $ yarn add @nestjs/typeorm
+
+<br/>
+
+### Artillery
+
+    $ npm install -g artillery@latest\
+    $ artillery --version
+
+    $ DEBUG=http:response artillery run artillery.yml
