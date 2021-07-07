@@ -10,7 +10,7 @@ import { verify } from 'jsonwebtoken';
 
 interface IExpressRequest extends Request {
   headers;
-  authorization?: String;
+  authorization?: string;
 }
 
 @Injectable()

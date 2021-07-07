@@ -9,6 +9,164 @@ https://shell.cloud.google.com/
 
 <br/>
 
+## Отчеты artillery
+
+<br/>
+
+### STANDARD
+
+```
+Report @ 06:17:18(+0300) 2021-07-07
+Elapsed time: 6 minutes, 20 seconds
+  Scenarios launched:  250
+  Scenarios completed: 0
+  Requests completed:  0
+  Mean response/sec: 25.03
+  Response time (msec):
+    min: NaN
+    max: NaN
+    median: NaN
+    p95: NaN
+    p99: NaN
+  Errors:
+    ETIMEDOUT: 250
+
+.   Getting token
+Report @ 06:17:28(+0300) 2021-07-07
+Elapsed time: 6 minutes, 30 seconds
+  Scenarios launched:  1
+  Scenarios completed: 0
+  Requests completed:  0
+  Mean response/sec: 0.1
+  Response time (msec):
+    min: NaN
+    max: NaN
+    median: NaN
+    p95: NaN
+    p99: NaN
+  Errors:
+    ETIMEDOUT: 250
+
+Report @ 06:17:28(+0300) 2021-07-07
+Elapsed time: 6 minutes, 30 seconds
+  Scenarios launched:  0
+  Scenarios completed: 0
+  Requests completed:  0
+  Mean response/sec: NaN
+  Response time (msec):
+    min: NaN
+    max: NaN
+    median: NaN
+    p95: NaN
+    p99: NaN
+  Errors:
+    ETIMEDOUT: 1
+
+All virtual users finished
+Summary report @ 06:17:28(+0300) 2021-07-07
+  Scenarios launched:  4800
+  Scenarios completed: 1800
+  Requests completed:  11018
+  Mean response/sec: 35.96
+  Response time (msec):
+    min: 0
+    max: 9854
+    median: 1713.5
+    p95: 6652
+    p99: 8115.3
+  Scenario counts:
+    Check Users: 4800 (100%)
+  Codes:
+    200: 9196
+    201: 1822
+  Errors:
+    ETIMEDOUT: 3000
+```
+
+<br/>
+
+![Application](/img/report1.png?raw=true)
+
+<br/>
+
+### USE_FASTIFY
+
+```
+Report @ 06:36:57(+0300) 2021-07-07
+Elapsed time: 6 minutes, 20 seconds
+  Scenarios launched:  250
+  Scenarios completed: 0
+  Requests completed:  0
+  Mean response/sec: 25.08
+  Response time (msec):
+    min: NaN
+    max: NaN
+    median: NaN
+    p95: NaN
+    p99: NaN
+  Errors:
+    ETIMEDOUT: 250
+
+.   Getting token
+Report @ 06:37:07(+0300) 2021-07-07
+Elapsed time: 6 minutes, 30 seconds
+  Scenarios launched:  1
+  Scenarios completed: 0
+  Requests completed:  0
+  Mean response/sec: 0.1
+  Response time (msec):
+    min: NaN
+    max: NaN
+    median: NaN
+    p95: NaN
+    p99: NaN
+  Errors:
+    ETIMEDOUT: 250
+
+Report @ 06:37:07(+0300) 2021-07-07
+Elapsed time: 6 minutes, 30 seconds
+  Scenarios launched:  0
+  Scenarios completed: 0
+  Requests completed:  0
+  Mean response/sec: NaN
+  Response time (msec):
+    min: NaN
+    max: NaN
+    median: NaN
+    p95: NaN
+    p99: NaN
+  Errors:
+    ETIMEDOUT: 1
+
+All virtual users finished
+Summary report @ 06:37:07(+0300) 2021-07-07
+  Scenarios launched:  4800
+  Scenarios completed: 1800
+  Requests completed:  11046
+  Mean response/sec: 35.98
+  Response time (msec):
+    min: 0
+    max: 9987
+    median: 7
+    p95: 103
+    p99: 5761.8
+  Scenario counts:
+    Check Users: 4800 (100%)
+  Codes:
+    200: 9218
+    201: 1828
+  Errors:
+    ETIMEDOUT: 3000
+
+Log file: report.json
+```
+
+<br/>
+
+![Application](/img/report2.png?raw=true)
+
+<br/>
+
 ### Запуск
 
 Нужно установить <a href="//sysadm.ru/devops/containers/docker/setup/ubuntu/">docker и docker-compose</a>.
