@@ -16,52 +16,6 @@ https://shell.cloud.google.com/
 ### STANDARD
 
 ```
-Report @ 06:17:18(+0300) 2021-07-07
-Elapsed time: 6 minutes, 20 seconds
-  Scenarios launched:  250
-  Scenarios completed: 0
-  Requests completed:  0
-  Mean response/sec: 25.03
-  Response time (msec):
-    min: NaN
-    max: NaN
-    median: NaN
-    p95: NaN
-    p99: NaN
-  Errors:
-    ETIMEDOUT: 250
-
-.   Getting token
-Report @ 06:17:28(+0300) 2021-07-07
-Elapsed time: 6 minutes, 30 seconds
-  Scenarios launched:  1
-  Scenarios completed: 0
-  Requests completed:  0
-  Mean response/sec: 0.1
-  Response time (msec):
-    min: NaN
-    max: NaN
-    median: NaN
-    p95: NaN
-    p99: NaN
-  Errors:
-    ETIMEDOUT: 250
-
-Report @ 06:17:28(+0300) 2021-07-07
-Elapsed time: 6 minutes, 30 seconds
-  Scenarios launched:  0
-  Scenarios completed: 0
-  Requests completed:  0
-  Mean response/sec: NaN
-  Response time (msec):
-    min: NaN
-    max: NaN
-    median: NaN
-    p95: NaN
-    p99: NaN
-  Errors:
-    ETIMEDOUT: 1
-
 All virtual users finished
 Summary report @ 06:17:28(+0300) 2021-07-07
   Scenarios launched:  4800
@@ -92,52 +46,6 @@ Summary report @ 06:17:28(+0300) 2021-07-07
 ### USE_FASTIFY
 
 ```
-Report @ 06:36:57(+0300) 2021-07-07
-Elapsed time: 6 minutes, 20 seconds
-  Scenarios launched:  250
-  Scenarios completed: 0
-  Requests completed:  0
-  Mean response/sec: 25.08
-  Response time (msec):
-    min: NaN
-    max: NaN
-    median: NaN
-    p95: NaN
-    p99: NaN
-  Errors:
-    ETIMEDOUT: 250
-
-.   Getting token
-Report @ 06:37:07(+0300) 2021-07-07
-Elapsed time: 6 minutes, 30 seconds
-  Scenarios launched:  1
-  Scenarios completed: 0
-  Requests completed:  0
-  Mean response/sec: 0.1
-  Response time (msec):
-    min: NaN
-    max: NaN
-    median: NaN
-    p95: NaN
-    p99: NaN
-  Errors:
-    ETIMEDOUT: 250
-
-Report @ 06:37:07(+0300) 2021-07-07
-Elapsed time: 6 minutes, 30 seconds
-  Scenarios launched:  0
-  Scenarios completed: 0
-  Requests completed:  0
-  Mean response/sec: NaN
-  Response time (msec):
-    min: NaN
-    max: NaN
-    median: NaN
-    p95: NaN
-    p99: NaN
-  Errors:
-    ETIMEDOUT: 1
-
 All virtual users finished
 Summary report @ 06:37:07(+0300) 2021-07-07
   Scenarios launched:  4800
@@ -260,6 +168,26 @@ $ yarn db:seed
 :heavy_check_mark: В зависисимости от env переменной USE_FASTIFY Nest.js должен использовать или express или fastify +30 баллов
 
 :heavy_check_mark: Необходимо сравнить производительность Nest.js с использованием express и fastify (можно использовать для этих целей artillery) +30 баллов
+
+<br/>
+
+### Штрафы:
+
+:heavy_check_mark: Наличие изменений в тестах либо в workflow минус 200 баллов
+
+:heavy_check_mark: Внесение изменений в репозиторий после дедлайна не считая коммиты, вносящие изменения только в Readme.md и другую документацию) минус 30% от максимального балла за задание (для этого задания 72 балла)
+
+:heavy_check_mark: За отсутствие отдельной ветки для разработки -20 баллов
+
+:heavy_check_mark: За отсутствие Pull Request -20 баллов
+
+:heavy_check_mark: За неполную информацию в описании Pull Request (отсутствует либо некорректен один из 3 обязательных пунктов) -10 баллов
+
+:heavy_check_mark: За каждую ошибку линтера при запуске npm run lint на основе локального конфига -5 баллов (именно errors, не warnings)
+
+:heavy_check_mark: За каждый непроходящий тест npm run test:auth -20 баллов
+
+:heavy_check_mark: Меньше 3 коммитов (не считая коммиты, вносящие изменения только в Readme.md и другую документацию) — -20 баллов
 
 <br/>
 
