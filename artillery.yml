@@ -55,7 +55,7 @@ scenarios:
           url: '/users'
           json:
             name: 'user'
-            login: 'user'
+            login: 'user-{{ $randomString(8) }}'
             password: 'user'
           capture:
             json: '$.id'
