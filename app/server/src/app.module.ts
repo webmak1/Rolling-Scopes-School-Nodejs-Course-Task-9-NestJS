@@ -1,6 +1,6 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthMiddleware } from 'middlewares/auth.middleware';
+import { LogMiddleware } from 'middlewares/log.middleware';
 import { BoardsModule } from './boards/boards.module';
 import { LoginModule } from './login/login.module';
 import ormconfig from './ormconfig';
@@ -18,7 +18,7 @@ import { UsersModule } from './users/users.module';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).exclude('/login').forRoutes({
+    consumer.apply(LogMiddleware).exclude('/login').forRoutes({
       path: '*',
       method: RequestMethod.ALL,
     });

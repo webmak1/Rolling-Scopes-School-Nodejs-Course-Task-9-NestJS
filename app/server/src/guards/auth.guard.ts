@@ -8,12 +8,15 @@ import {
 import { config } from 'common/config';
 import { verify } from 'jsonwebtoken';
 
-// import { IExpressRequest } from 'types/expressRequest.interface';
+interface IExpressRequest extends Request {
+  headers;
+  authorization?: String;
+}
 
 @Injectable()
 export class AuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
-    const request = context.switchToHttp().getRequest<any>();
+    const request = context.switchToHttp().getRequest<IExpressRequest>();
 
     if (!request.headers.authorization) {
       throw new HttpException('[App] UNAUTHORIZED', HttpStatus.UNAUTHORIZED);

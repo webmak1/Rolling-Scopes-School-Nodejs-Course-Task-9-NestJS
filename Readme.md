@@ -85,6 +85,26 @@ $ yarn db:seed
 
 <br/>
 
+## Комментарии к задачам:
+
+:heavy_check_mark: Guards должны использоваться для работы с авторизацией/аутентификацией +30 баллов
+
+:heavy_check_mark: В приложении должны использоваться модули для разбиения структуры приложения на различные части (User, Board, Task) +30 баллов
+
+:heavy_check_mark: Exception filters должны использоваться для обработки исключений в приложении +30 баллов
+
+:heavy_check_mark: @nestjs/typeorm должен использоваться для работы с базой данных +30 баллов
+
+:heavy_check_mark: Для логирования может использоваться встроенный Logger или кастомная имплементация. +30 баллов
+
+:heavy_check_mark: Все внешние зависимости для модулей/классов должны предоставляться с помощью механизма dependency injection. +30 баллов
+
+:heavy_check_mark: В зависисимости от env переменной USE_FASTIFY Nest.js должен использовать или express или fastify +30 баллов
+
+:heavy_check_mark: Необходимо сравнить производительность Nest.js с использованием express и fastify (можно использовать для этих целей artillery) +30 баллов
+
+<br/>
+
 ### Возможные проверки
 
 <br/>
@@ -245,6 +265,8 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 **Возвращает Forbidden:**  
 403
 
+<br/>
+
 ```
 
 $ export USER_ID=d55f78af-5ac1-459f-b376-6a50e086aee3
@@ -256,28 +278,6 @@ $ curl \
     -H "authorization: Bearer ${TOKEN}" \
     | python -m json.tool
 ```
-
-<br/>
-
-## Комментарии к задачам:
-
-:heavy_check_mark: Guards должны использоваться для работы с авторизацией/аутентификацией +30 баллов
-
-:heavy_check_mark: В приложении должны использоваться модули для разбиения структуры приложения на различные части (User, Board, Task) +30 баллов
-
-:heavy_check_mark: Exception filters должны использоваться для обработки исключений в приложении +30 баллов
-
-:heavy_check_mark: @nestjs/typeorm должен использоваться для работы с базой данных +30 баллов
-
-:x: Для логирования может использоваться встроенный Logger или кастомная имплементация. +30 баллов
-
-https://docs.nestjs.com/techniques/logger
-
-:heavy_check_mark: Все внешние зависимости для модулей/классов должны предоставляться с помощью механизма dependency injection. +30 баллов
-
-:heavy_check_mark: В зависисимости от env переменной USE_FASTIFY Nest.js должен использовать или express или fastify +30 баллов
-
-:heavy_check_mark: Необходимо сравнить производительность Nest.js с использованием express и fastify (можно использовать для этих целей artillery) +30 баллов
 
 <br/>
 
@@ -312,9 +312,10 @@ https://docs.nestjs.com/techniques/logger
     $ npm install -g artillery@latest\
     $ artillery --version
 
-    $ DEBUG=http:response artillery run artillery.yml --output report.json
+    // $ DEBUG=http:response artillery run artillery.yml --output report.json
+    $ artillery run artillery.yml --output report.json
 
-    $ DEBUG=http:response artillery report report.json
+    $ artillery report report.json
 
 <br/>
 
