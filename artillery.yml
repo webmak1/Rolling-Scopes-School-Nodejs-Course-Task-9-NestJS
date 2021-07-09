@@ -61,7 +61,7 @@ scenarios:
             json: '$.id'
             as: user_id
           expect:
-            - statusCode: 200
+            - statusCode: 201
       # - timeout: 1
       - log: 'Get User By ID {{ user_id }}'
       - get:
