@@ -81,7 +81,7 @@ Log file: report.json
 
 Клонировать проект. Ветка dev уже установлена по умолчанию.
 
-В каталоге Task-8-Authentification-JWT выполнить.
+В каталоге Task-9-NestJS выполнить.
 
 <br/>
 
