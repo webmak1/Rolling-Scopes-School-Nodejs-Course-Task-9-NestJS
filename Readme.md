@@ -1,4 +1,4 @@
-# RS School Task 8 Authentification JWT
+# RS School Task 9 NestJS
 
 Привет!
 
@@ -6,6 +6,72 @@
 
 Если вы работаете в windows и есть gmail аккаунт, работу можно протестировать в бесплатных облаках google.  
 https://shell.cloud.google.com/
+
+<br/>
+
+## Отчеты artillery
+
+<br/>
+
+### STANDARD
+
+```
+All virtual users finished
+Summary report @ 06:17:28(+0300) 2021-07-07
+  Scenarios launched:  4800
+  Scenarios completed: 1800
+  Requests completed:  11018
+  Mean response/sec: 35.96
+  Response time (msec):
+    min: 0
+    max: 9854
+    median: 1713.5
+    p95: 6652
+    p99: 8115.3
+  Scenario counts:
+    Check Users: 4800 (100%)
+  Codes:
+    200: 9196
+    201: 1822
+  Errors:
+    ETIMEDOUT: 3000
+```
+
+<br/>
+
+![Application](/img/report1.png?raw=true)
+
+<br/>
+
+### USE_FASTIFY
+
+```
+All virtual users finished
+Summary report @ 06:37:07(+0300) 2021-07-07
+  Scenarios launched:  4800
+  Scenarios completed: 1800
+  Requests completed:  11046
+  Mean response/sec: 35.98
+  Response time (msec):
+    min: 0
+    max: 9987
+    median: 7
+    p95: 103
+    p99: 5761.8
+  Scenario counts:
+    Check Users: 4800 (100%)
+  Codes:
+    200: 9218
+    201: 1828
+  Errors:
+    ETIMEDOUT: 3000
+
+Log file: report.json
+```
+
+<br/>
+
+![Application](/img/report2.png?raw=true)
 
 <br/>
 
@@ -82,6 +148,49 @@ $ yarn db:create CreateMigrations
 $ yarn db:migrate
 $ yarn db:seed
 ```
+
+<br/>
+
+## Комментарии к задачам:
+
+:heavy_check_mark: Guards должны использоваться для работы с авторизацией/аутентификацией +30 баллов
+
+:heavy_check_mark: В приложении должны использоваться модули для разбиения структуры приложения на различные части (User, Board, Task) +30 баллов
+
+:heavy_check_mark: Exception filters должны использоваться для обработки исключений в приложении +30 баллов
+
+:heavy_check_mark: @nestjs/typeorm должен использоваться для работы с базой данных +30 баллов
+
+:heavy_check_mark: Для логирования может использоваться встроенный Logger или кастомная имплементация. +30 баллов
+
+- Логируются в консоль реквесты к users,tasks,boards. 
+- Ошибки типа error записываются в файл логов с ошибками.
+
+:heavy_check_mark: Все внешние зависимости для модулей/классов должны предоставляться с помощью механизма dependency injection. +30 баллов
+
+:heavy_check_mark: В зависисимости от env переменной USE_FASTIFY Nest.js должен использовать или express или fastify +30 баллов
+
+:heavy_check_mark: Необходимо сравнить производительность Nest.js с использованием express и fastify (можно использовать для этих целей artillery) +30 баллов
+
+<br/>
+
+### Штрафы:
+
+:heavy_check_mark: Наличие изменений в тестах либо в workflow минус 200 баллов
+
+:heavy_check_mark: Внесение изменений в репозиторий после дедлайна не считая коммиты, вносящие изменения только в Readme.md и другую документацию) минус 30% от максимального балла за задание (для этого задания 72 балла)
+
+:heavy_check_mark: За отсутствие отдельной ветки для разработки -20 баллов
+
+:heavy_check_mark: За отсутствие Pull Request -20 баллов
+
+:heavy_check_mark: За неполную информацию в описании Pull Request (отсутствует либо некорректен один из 3 обязательных пунктов) -10 баллов
+
+:heavy_check_mark: За каждую ошибку линтера при запуске npm run lint на основе локального конфига -5 баллов (именно errors, не warnings)
+
+:heavy_check_mark: За каждый непроходящий тест npm run test:auth -20 баллов
+
+:heavy_check_mark: Меньше 3 коммитов (не считая коммиты, вносящие изменения только в Readme.md и другую документацию) — -20 баллов
 
 <br/>
 
@@ -230,7 +339,7 @@ $ curl -s -o /dev/null -w "%{http_code}" \
 
 <br/>
 
-### Пробуем подключиться пользователем отсутствующем в базе данных fake/fake
+### Пробуем подключиться пользователем, отсутствующим в базе данных fake/fake
 
 ```
 $ curl -s -o /dev/null -w "%{http_code}"  \
@@ -247,56 +356,58 @@ $ curl -s -o /dev/null -w "%{http_code}"  \
 
 <br/>
 
-## Комментарии к задачам:
-
-:heavy_check_mark: Пароли пользователей сохраняются в базу в виде хэша с использованием bcrypt. +20 баллов.
-
-См. user.model.ts
-
-https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/resources/users/user.model.ts
-
-```
-  @BeforeInsert()
-  async hashPassword(): Promise<void> {
-    this.password = await hash(this.password, 10);
-  }
 ```
 
-:heavy_check_mark: Добавлен роут /login, связанная с ним логика разделена между контроллером (middleware) и соответствующим сервисом. В случае отсутствия юзера в БД, возвращается 403 (Forbidden) HTTP статус. +20 баллов.
+$ export USER_ID=d55f78af-5ac1-459f-b376-6a50e086aee3
 
-:heavy_check_mark: JWT токен содержит userId и login, секретный ключ хранится в .env +20 баллов.
-
-:heavy_check_mark: Доступ ко всем роутам, за исключением /login, /doc и /, требует аутентификации +20 баллов.
-
-:heavy_check_mark: Проверка на наличие токена в реквесте реализована в отдельной middleware на уровне приложения.
-В случае если токен не валидный, или отсутствует, возвращается 401 (Unauthorized) HTTP статус. +20 баллов.
+// GET USER BY ID
+$ curl \
+    -H "Content-Type: application/json" \
+    -X GET localhost:4000/users/${USER_ID} \
+    -H "authorization: Bearer ${TOKEN}" \
+    | python -m json.tool
+```
 
 <br/>
 
-### Штрафы:
+### Шаги по созданию
 
-:heavy_check_mark: Наличие изменений в тестах либо в workflow минус 100 баллов
+<br/>
 
-:heavy_check_mark: Внесение изменений в репозиторий после дедлайна не считая коммиты, вносящие изменения только в Readme.md минус 30% от максимального балла за задание (для этого задания 30 баллов)
+    $ npm install -g @nestjs/cli
+    $ npm install -g typescript
 
-:heavy_check_mark: За каждую ошибку линтера при запуске npm run lint на основе локального конфига -20 баллов (именно errors, не warnings)
+<br/>
 
-:heavy_check_mark: За каждую ошибку компилятора -20 баллов
+    $ cd app/server
+    $ nest new .
 
-:heavy_check_mark: Для успешного прохождения тестов обязательно наличие в БД юзера с логином - admin, паролем - admin. Все тесты npm run test:auth должны проходить успешно, каждый не пройденный тест минус 20 баллов.
+<br/>
 
-Пользователь admin/admin создается при старте приложения. 
+    $ nest generate resource users
+    $ nest generate resource tasks
+    $ nest generate resource boards
+    $ nest generate resource login
 
-Выполняется скрипт.
+<br/>
 
-https://github.com/webmak1/Task-8-Authentification-JWT/blob/dev/src/seeds/1624496892902-CreateMigrations.ts
+    $ yarn add typeorm bcryptjs pg
+    $ yarn add @nestjs/typeorm
 
-:heavy_check_mark: Имеются явно указанные типы any, unknown -20 баллов за каждое использование
+<br/>
 
-:heavy_check_mark: За отсутствие отдельной ветки для разработки -20 баллов
+### Artillery
 
-:heavy_check_mark: За отсутствие Pull Request -20 баллов
+    $ npm install -g artillery@latest\
+    $ artillery --version
 
-:heavy_check_mark: За неполную информацию в описании Pull Request (отсутствует либо некорректен один из 3 обязательных пунктов) -10 баллов
+    // $ DEBUG=http:response artillery run artillery.yml --output report.json
+    $ artillery run artillery.yml --output report.json
 
-:heavy_check_mark: Меньше 3 коммитов в ветке разработки, не считая коммиты, вносящие изменения только в Readme.md — -20 баллов
+    $ artillery report report.json
+
+<br/>
+
+Или загрузить файл на сайт:
+
+https://reportviewer.artillery.io/

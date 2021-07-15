@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     build:
-      context: .
+      context: ./app/server/
       dockerfile: DockerfileApp.dockerfile
       network: rsschool-network
     restart: always
@@ -14,7 +14,7 @@ services:
       - postgres
     volumes:
       - /app/node_modules
-      - .:/app
+      - ./app/server:/app
     environment:
       - PORT=${PORT}
     image: webmakaka/rsschool-app

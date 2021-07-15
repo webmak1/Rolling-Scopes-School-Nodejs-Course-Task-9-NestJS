@@ -1,0 +1,103 @@
+config:
+  target: 'http://localhost:4000'
+  phases:
+    - duration: 120
+      arrivalRate: 5
+      name: 'Warm up'
+    - pause: 10
+    - duration: 120
+      arrivalRate: 10
+      name: 'More load'
+    - pause: 10
+    - duration: 120
+      arrivalRate: 25
+      name: 'More load'
+  # variables:
+  #   userNumber:
+  #     "1"
+  #     "2"
+  #     "3"
+  # phases:
+  #   - duration: 60
+  #     arrivalRate: 5
+  #     name: Warm up
+  #   - duration: 120
+  #     arrivalRate: 5
+  #     rampTo: 50
+  #     name: Ramp up load
+  #   - duration: 600
+  #     arrivalRate: 50
+  #     name: Sustained load
+
+scenarios:
+  - name: 'Check Users'
+    flow:
+      - log: 'Getting token'
+      - post:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+          url: '/login'
+          json:
+            login: 'admin'
+            password: 'admin'
+          capture:
+            json: '$.token'
+            as: admin_token
+          expect:
+            - statusCode: 200
+      - log: 'Bearer {{ admin_token }}'
+      # - timeout: 1
+      - log: 'Create User'
+      - post:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users'
+          json:
+            name: 'user'
+            login: 'user-{{ $randomString(8) }}'
+            password: 'user'
+          capture:
+            json: '$.id'
+            as: user_id
+          expect:
+            - statusCode: 201
+      # - timeout: 1
+      - log: 'Get User By ID {{ user_id }}'
+      - get:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users/{{ user_id }}'
+          expect:
+            - statusCode: 200
+      # - timeout: 1
+      - log: 'Update User By ID'
+      - put:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users/{{ user_id }}'
+          json:
+            name: 'user1'
+          expect:
+            - statusCode: 200
+      - log: 'Delete User By ID'
+      - delete:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users/{{ user_id }}'
+          json:
+            name: 'user1'
+          expect:
+            - statusCode: 200
+      # - timeout: 1
+      - log: 'Get All Users'
+      - get:
+          headers:
+            Content-Type: 'application/json; charset=utf-8'
+            Authorization: 'Bearer {{ admin_token }}'
+          url: '/users'
+          expect:
+            - statusCode: 200
